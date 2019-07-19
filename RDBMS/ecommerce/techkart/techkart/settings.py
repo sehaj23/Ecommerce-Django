@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'techkart.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "postgres",
-        "USER": "postgres",
-        "PASSWORD":"dl4cl0621",
-        "HOST":"localhost",
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': "postgres",
+        # "USER": "postgres",
+        # "PASSWORD":"dl4cl0621",
+        # "HOST":"localhost",
     }
 }
 
@@ -121,11 +121,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
-STATICFILES_DIR =  [
-    os.path.join(BASE_DIR,'techkart/static')
-]
+# STATICFILES_DIR =  [
+#     os.path.join("./",'../static')
+# ]
 
 #media folder
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
