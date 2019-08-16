@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.conf.global_settings import SECURE_SSL_REDIRECT
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -32,7 +34,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
-    'pages.apps.PagesConfig',
     'productlist.apps.ProductlistConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,10 +44,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -143,3 +145,5 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'DANGER',
 }
+#SESSION_COOKIE_DOMAIN = ".nb.local.com"
+SECURE_SSL_REDIRECT = False

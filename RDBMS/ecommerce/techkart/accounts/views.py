@@ -1,17 +1,35 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render,redirect
+from django.contrib import messages,auth
+from django.contrib.auth.models import User
 
 # Create your views here.
 def register(request):
     if request.method == "POST":
-        return HttpResponse("submited")
+        first_name = request.POST["fname"]
+        last_name = request.POST["lname"]
+        email = request.POST["email"]
+        username= request.POST["username"]
+        password = request.POST["password"]
+        cpassword = request.POST["cpassword"]
+
+        #check if password match
+        if password==cpassword:
+            if User.objects.filter(email=email).exists():
+                messages.error(request,"Email ID already registered")
+                return redirect('register')
+            else:
+                user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password)
+                user.save()
+                #login after register
+                auth.login(request,user)
+                messages.success(request,"You are now Logged in")
+                return redirect('listings')
+        else:
+            messages.error(request,"password does not match")
+            return redirect('register')
+
     else:
-        return render(request,"accounts/userRegistration.html")
+        return render(request,"accounts/register.html")
 
 def login(request):
-    return render(request,"accounts/userLogin.html")
-
-def logout(request):
-    return redirect('index')
-
-def dashboard(request):
-    return render(request,"accounts/dashboard.html")
+    return render(request,"accounts/login.html")
