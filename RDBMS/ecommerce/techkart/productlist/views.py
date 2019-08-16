@@ -4,7 +4,11 @@ from .models import listing
 
 def index(request):
     alllisting = listing.objects.all()
-    context = { "alllisting": alllisting}
+    storage= listing.objects.filter(category="Storage")
+
+    context = { "alllisting": alllisting,
+                "storage":storage
+                }
     return render(request,"productlist/index.html",context)
 
 def listingss(request,listing_id):

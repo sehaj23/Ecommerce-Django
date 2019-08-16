@@ -363,29 +363,29 @@
                         </div>
                     </div>
                     <!-- /section title -->
-`               {% if alllisting %}
+`               {% if storage %}
                       <div class="col-md-12">
                         <div class="row">
                             <div class="products-tabs">
                                 <!-- tab -->
                                 <div id="tab2" class="tab-pane fade in active">
                                     <div class="products-slick" data-nav="#slick-nav-2">
-                    {% for alllisting in alllisting %}
+                    {% for storage in storage %}
                         <!-- Products tab & slick -->
 
                                         <!-- product -->
                                         <div class="product">
                                             <div class="product-img">
-                                                <img src="{{ alllisting.mainphoto.url }}" alt="">
+                                                <img src="{{ storage.mainphoto.url }}" alt="">
                                                 <div class="product-label">
                                                     <span class="sale">-30%</span>
                                                     <span class="new">NEW</span>
                                                 </div>
                                             </div>
                                             <div class="product-body">
-                                                <p class="product-category">{{ alllisting.category }}</p>
-                                                <h3 class="product-name"><a href="#">{{ alllisting.p_name }}</a></h3>
-                                                <h4 class="product-price">Rs.{{ alllisting.price }} <del class="product-old-price">Rs.{{ alllisting.price }}</del></h4>
+                                                <p class="product-category">{{ storage.category }}</p>
+                                                <h3 class="product-name"><a href="#">{{ storage.p_name }}</a></h3>
+                                                <h4 class="product-price">Rs.{{ storage.price }} <del class="product-old-price">Rs.{{ storage.price }}</del></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -623,7 +623,6 @@
                     </div>
 
                     <div class="clearfix visible-sm visible-xs"></div>
-
                     <div class="col-md-4 col-xs-6">
                         <div class="section-title">
                             <h4 class="title">Top selling</h4>
@@ -647,71 +646,6 @@
                                 </div>
                                 <!-- /product widget -->
 
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product02.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">Rs. 980.00 <del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product03.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">Rs. 980.00 <del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- product widget -->
-                            </div>
-
-                            <div>
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product04.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">Rs. 980.00 <del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product05.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">Rs. 980.00 <del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="./img/product06.png" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">Category</p>
-                                        <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                        <h4 class="product-price">Rs. 980.00 <del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
                                 <!-- product widget -->
                             </div>
                         </div>
