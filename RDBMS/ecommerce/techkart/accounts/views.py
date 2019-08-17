@@ -46,3 +46,7 @@ def login(request):
             return redirect("login")
     else:
         return render(request,"accounts/login.html")
+
+def logout(request):
+    auth.logout(request)
+    return render(request,"productlist/index.html")
