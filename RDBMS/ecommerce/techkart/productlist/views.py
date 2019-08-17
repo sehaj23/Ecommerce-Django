@@ -5,15 +5,25 @@ from .models import listing
 def index(request):
     alllisting = listing.objects.all()
     storage= listing.objects.filter(category="Storage")
+    mobile= listing.objects.filter(category="mobile")
+    laptop = listing.objects.filter(category="laptop")
+    headphones = listing.objects.filter(category="headphones")
 
     context = { "alllisting": alllisting,
-                "storage":storage
+                "storage":storage,
+                "mobile":mobile,
+                "laptop":laptop,
+                "headphones":headphones
                 }
     return render(request,"productlist/index.html",context)
 
 def listingss(request,listing_id):
+    category = listing.objects.filter(category="mobile")
     Listing = get_object_or_404(listing,pk=listing_id)
-    context = {"Listing": Listing}
+
+    context = {"Listing": Listing,
+               "category": category
+               }
     return render(request,"productlist/product.html",context)
 
 def search(request):

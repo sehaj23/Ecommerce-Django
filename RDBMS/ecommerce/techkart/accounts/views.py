@@ -32,4 +32,17 @@ def register(request):
         return render(request,"accounts/register.html")
 
 def login(request):
-    return render(request,"accounts/login.html")
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            messages.success(request,"Successfully logged in")
+            return redirect("listings")
+        else:
+            messages.error(request,"Invalid Credentials")
+            return redirect("login")
+    else:
+        return render(request,"accounts/login.html")

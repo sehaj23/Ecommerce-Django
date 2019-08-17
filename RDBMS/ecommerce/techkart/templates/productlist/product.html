@@ -556,7 +556,7 @@
             <!-- /container -->
         </div>
         <!-- /SECTION -->
-
+        {% if category %}
         <!-- Section -->
         <div class="section">
             <!-- container -->
@@ -571,18 +571,19 @@
                     </div>
 
                     <!-- product -->
+                {% for category in category %}
                     <div class="col-md-3 col-xs-6">
                         <div class="product">
                             <div class="product-img">
-                                <img src="./img/product01.png" alt="">
+                                <img src="{{ category.mainphoto.url }}" alt="">
                                 <div class="product-label">
                                     <span class="sale">-30%</span>
                                 </div>
                             </div>
                             <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">Rs. 980.00 <del class="product-old-price">Rs. 990.00</del></h4>
+                                <p class="product-category">{{ category.category }}</p>
+                                <h3 class="product-name"><a href="#">{{ category.p_name }}</a></h3>
+                                <h4 class="product-price">Rs. {{ category.price }}<del class="product-old-price">Rs. 990.00</del></h4>
                                 <div class="product-rating">
                                 </div>
                                 <div class="product-btns">
@@ -596,6 +597,9 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
+
+
                     <!-- /product -->
 
 
@@ -607,6 +611,11 @@
             <!-- /container -->
         </div>
         <!-- /Section -->
+         {% else %}
+                        <div class="col-md-12">
+                            <p>NO LISTING AVAILABLE</p>
+                        </div>
+                    {% endif %}
 
         <!-- NEWSLETTER -->
         <!--        <div id="newsletter" class="section">
@@ -646,6 +655,6 @@
 
 
 
-      
+
     </body>
 </html>
