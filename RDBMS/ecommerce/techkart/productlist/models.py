@@ -1,6 +1,9 @@
 from django.db import models
-
+from django.contrib.auth import get_user_model
 # Create your models here.
+
+
+
 class listing(models.Model):
     id = models.IntegerField(max_length=10,primary_key=True)
     p_name = models.CharField(max_length=100)
@@ -15,16 +18,15 @@ class listing(models.Model):
     def __str__(self):
         return self.p_name
 
-class users(models.Model):
-    u_id =models.IntegerField(max_length=50)
-    u_fname=models.CharField(max_length=200)
-    u_lname=models.CharField(max_length=200)
-    u_email=models.EmailField(max_length=200)
-    u_gender=models.CharField(max_length=200)
-    u_mobile=models.IntegerField(max_length=13)
-    u_city=models.CharField(max_length=100)
-    u_address=models.CharField(max_length=100)
-    u_state=models.CharField(max_length=100)
-    u_zipcode=models.IntegerField(max_length=200)
+class productreviews(models.Model):
+    rid = models.IntegerField(max_length=20,primary_key=True)
+   # pid = models.ForeignKey('listing', on_delete=models.CASCADE)
+    #cid = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
+    rhead= models.CharField(max_length=100)
+   #data = models.CharField(max_length=500)
+    star = models.IntegerField(max_length=1)
     def __str__(self):
-        return self.u_fname
+        return self.rhead
+
+
+

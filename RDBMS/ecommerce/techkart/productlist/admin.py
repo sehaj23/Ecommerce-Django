@@ -13,3 +13,8 @@ class listingadmmin(admin.ModelAdmin):
     search_fields = ("p_name","category","price")
 
 admin.site.register(listing,listingadmmin)
+
+#class reviewadmin(admin.ModelAdmin):
+    #list_display = ('id','cid','pid','rhead')
+
+#admin.site.register(reviewss)
