@@ -79,13 +79,16 @@
         <div id="newsletter" class="section">
             <!-- container -->
             <div class="container">
+                  {% include 'partial/_alerts.html' %}
                 <!-- row -->
                 <div class="row">
+
                     <div class="col-md-12">
                         <div class="newsletter">
 
                             <form method="post" action="{% url 'login' %}">
                                 {% csrf_token %}
+
                                 <div class="form-group">
                                     <label for="username">User Id</label>
                                     <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username" name="username">

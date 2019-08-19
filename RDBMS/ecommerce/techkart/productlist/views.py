@@ -50,5 +50,12 @@ def search(request):
     return render(request, "productlist/search.html", context)
 
 
-#def postreviews(request):
- #   return HttpResponse("hello")
+def postreviews(request):
+    if request.method == "post":
+        post = productreviews()
+        post.rhead = request.POST.get["reviews"]
+        post.rating = request.POST.get["rating"]
+        post.save()
+        return render(request, "/product.html")
+    else:
+        return render(request,"/index.html")

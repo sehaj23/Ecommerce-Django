@@ -393,7 +393,7 @@
                                         <!-- Review Form -->
                                         <div class="col-md-3">
                                             <div id="review-form">
-                                                <form method="POST" action="{% url 'reviews:post' %}">
+                                                <form method="POST" action=".">
                                                     {% csrf_token %}
                                                     <textarea class="input" placeholder="Your Review" name="reviews" ></textarea>
                                                     <div class="input-rating">
@@ -406,7 +406,7 @@
                                                             <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
                                                         </div>
                                                     </div>
-                                                    <button class="primary-btn">Submit</button>
+                                                    <input type="submit" value="submit" name="submit">
                                                 </form>
                                             </div>
                                         </div>
