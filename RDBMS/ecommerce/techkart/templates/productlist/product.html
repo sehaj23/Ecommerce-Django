@@ -198,6 +198,9 @@
                                     </div>
                                 </div>
                                 <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <br><br>
+
+
                             </div>
 
 
@@ -379,38 +382,17 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <ul class="reviews-pagination">
-                                                    <li class="active">1</li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
+                                                <center>
+                                                <a target="_self" href="{{ 'reviews' }}"><strong><h4>Add Reviews</h4></strong></a>
+                                                </center>
                                             </div>
                                         </div>
                                         <!-- /Reviews -->
 
-                                        <!-- Review Form -->
-                                        <div class="col-md-3">
-                                            <div id="review-form">
-                                                <form method="POST" action=".">
-                                                    {% csrf_token %}
-                                                    <textarea class="input" placeholder="Your Review" name="reviews" ></textarea>
-                                                    <div class="input-rating">
-                                                        <span>Your Rating: </span>
-                                                        <div class="stars">
-                                                            <input id="star5" name="rating" value="5" type="radio" ><label for="star5" ></label>
-                                                            <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-                                                            <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-                                                            <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-                                                            <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
-                                                        </div>
-                                                    </div>
-                                                    <input type="submit" value="submit" name="submit">
-                                                </form>
-                                            </div>
-                                        </div>
+
                                         <!-- /Review Form -->
+
+
                                     </div>
                                 </div>
                                 <!-- /tab3  -->
@@ -464,6 +446,8 @@
                             <div class="add-to-cart">
                                 <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                             </div>
+                            <br>
+
                         </div>
                     </div>
                     {% endfor %}

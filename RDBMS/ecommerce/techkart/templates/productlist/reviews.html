@@ -1,0 +1,104 @@
+{% extends 'productlist/base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<div id="header">
+      <title>TechKart : Home</title>
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <!--my account -->
+                        {% if user.is_authenticated %}
+                           <ul class="header-links pull-right">
+                        <li><a href="{% url 'logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
+                    </ul>                         <ul class="header-links pull-right">
+                        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    </ul>
+
+                         <div class="header-ctn">
+                          <div class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>Your Cart</span>
+                                        <div class="qty"></div>
+                                    </a>
+
+                                </div>
+                         </div>
+                        {% else %}
+                             <ul class="header-links pull-right">
+                        <li><a href="{% url 'login' %}"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                        <ul class="header-links pull-right">
+                        <li><a href="{% url 'register' %}"><i class="fa fa-user-o"></i> Register</a></li>
+                    </ul>
+
+                        {% endif %}
+                        <!-- LOGO -->
+                        <div class="col-md-3">
+                            <div class="header-logo">
+                                <a href="#" class="logo">
+                                    <img src="{% static './img/logo.png' %}" alt="" height="100px" width="150px">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- /LOGO -->
+
+                        <!-- SEARCH BAR -->
+                        <div class="col-md-6">
+                            <div class="header-search">
+                                <form action="{% url 'search' %} " method="get">
+                                {% csrf_token %}
+                                    <input class="input" placeholder="Search here" name="keywords">
+                                    <button class="search-btn">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /SEARCH BAR -->
+
+                        <!-- ACCOUNT -->
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+</head>
+
+<body>
+<center>
+   <!-- Review Form -->
+                                        <div class="col-md-5">
+                                            <div id="review-form">
+                                                <form method="POST" action=".">
+                                                    {% csrf_token %}
+                                                    <textarea class="input" placeholder="Your Review" name="reviews" ></textarea>
+                                                    <div class="input-rating">
+                                                        <span>Your Rating: </span>
+                                                        <div class="stars">
+                                                            <input id="star5" name="rating" value="5" type="radio" ><label for="star5" ></label>
+                                                            <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
+                                                            <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
+                                                            <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
+                                                            <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+                                                        </div>
+                                                    </div>
+                                                    <input type="submit" value="submit" name="submit">
+                                                </form>
+                                            </div>
+                                        </div>
+</center>
+</body>
+</html>
+{% endblock %}

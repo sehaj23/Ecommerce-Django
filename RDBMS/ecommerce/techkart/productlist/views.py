@@ -59,3 +59,7 @@ def postreviews(request):
         return render(request, "/product.html")
     else:
         return render(request,"/index.html")
+
+
+def reviews(request):
+   return render(request,"productlist/reviews.html")
