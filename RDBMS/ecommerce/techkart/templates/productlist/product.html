@@ -3,7 +3,7 @@
 {% block content %}
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
  <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,7 +46,7 @@
                         <div class="col-md-3">
                             <div class="header-logo">
                                 <a href="#" class="logo">
-                                    <img src="{% static './img/logo.png' %}" alt="" height="100px" width="150px">
+                                    <img src="{% static './img/logoo.png' %}" alt="" height="75px" width="75px">
                                 </a>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                         <!-- SEARCH BAR -->
                         <div class="col-md-6">
                             <div class="header-search">
-                                <form action="{% url 'search' %} " method="get">
+                                <form action="{.} " method="get">
                                 {% csrf_token %}
                                     <input class="input" placeholder="Search here" name="keywords">
                                     <button class="search-btn">Search</button>
@@ -189,7 +189,7 @@
                             </div>
 
                             <div class="add-to-cart">
-                                <div class="qty-label">
+                             <div class="qty-label">
                                     Qty
                                     <div class="input-number">
                                         <input type="number" value="0">
@@ -197,7 +197,7 @@
                                         <span class="qty-down">-</span>
                                     </div>
                                 </div>
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <a target="_self" href="{% url 'shoppingcart:addtocart' Listing.id %}"><strong><h4>Add To Cart</h4></strong></a>
                                 <br><br>
 
 
@@ -216,7 +216,7 @@
                             <ul class="tab-nav">
                                 <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
                                 <li><a data-toggle="tab" href="#tab2">Details</a></li>
-                                <li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+                                <li><a data-toggle="tab" href="#tab3">Reviews </a></li>
                             </ul>
                             <!-- /product tab nav -->
 
@@ -328,67 +328,41 @@
                                             </div>
                                         </div>
                                         <!-- /Rating -->
+                            {% if reviews %}
+
 
                                         <!-- Reviews -->
                                         <div class="col-md-6">
                                             <div id="reviews">
                                                 <ul class="reviews">
                                                     <li>
+                                            {% for reviews in reviews %}
                                                         <div class="review-heading">
-                                                            <h5 class="name">John</h5>
-                                                            <p class="date">27 DEC 2018, 8:0 PM</p>
+                                                            <h5 class="name">{{ user }}</h5>
+
                                                             <div class="review-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o empty"></i>
+                                                                <p>{{ reviews.star }}  <i class="fa fa-star"></i  </p>
+
                                                             </div>
                                                         </div>
                                                         <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                            <p>{{ reviews.data }}</p>
                                                         </div>
                                                     </li>
-                                                    <li>
-                                                        <div class="review-heading">
-                                                            <h5 class="name">John</h5>
-                                                            <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                            <div class="review-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o empty"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="review-heading">
-                                                            <h5 class="name">John</h5>
-                                                            <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                            <div class="review-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o empty"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                        </div>
-                                                    </li>
+
+
                                                 </ul>
                                                 <center>
+                                                    {% endfor %}
+                                                    {% else %}
+                                                    <h1>No Reviews Available</h1>
+                                                    {% endif %}
                                                 <a target="_self" href="{{ 'reviews' }}"><strong><h4>Add Reviews</h4></strong></a>
                                                 </center>
                                             </div>
                                         </div>
                                         <!-- /Reviews -->
-
+                                        <!-- Review Form -->
 
                                         <!-- /Review Form -->
 
@@ -438,13 +412,14 @@
                                 <div class="product-rating">
                                 </div>
                                 <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+
+
                                     <!--                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>-->
                                     <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <a target="_self" href="{% url 'shoppingcart:addtocart' category.id %}""><strong><h4>Add To Cart</h4></strong></a>
                             </div>
                             <br>
 

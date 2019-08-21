@@ -21,13 +21,12 @@ class listing(models.Model):
 
 class productreviews(models.Model):
     rid = models.IntegerField(max_length=20,primary_key=True)
-   # pid = models.ForeignKey('listing', on_delete=models.CASCADE)
-    #cid = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
+    id = models.ForeignKey('listing', on_delete=models.CASCADE)
+    cid = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     rhead= models.CharField(max_length=100)
-   #data = models.CharField(max_length=500)
+    data = models.CharField(max_length=500)
     star = models.IntegerField(max_length=1)
-    def __str__(self):
-        return self.rhead
-
+    class meta:
+        db_table = "Productreviews"
 
 
