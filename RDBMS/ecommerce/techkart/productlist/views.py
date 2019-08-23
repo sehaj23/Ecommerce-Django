@@ -1,6 +1,4 @@
-import random
-import string
-from datetime import date, datetime
+
 
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect,HttpResponseRedirect
 
@@ -33,14 +31,23 @@ def listingss(request, listing_id):
     category = listing.objects.filter(category="mobile")
     Listing = get_object_or_404(listing, pk=listing_id)
 
+
+
+
     reviews = productreviews.objects.filter(id=listing_id)
+
     #name = productreviews.objects.values(reviews)
    # Auth_user  = productreviews.cid
 
     userid  = productreviews.objects.filter(id=listing_id).values_list("cid",flat=True)
     querysetcount = userid.count()
 
-    user  = User.objects.get(id=userid[1])
+    #iddd = User.objects.filter(id=userid)
+
+    #print("idd is ",iddd)
+
+  #  print("user id is ",userid.id)
+   # user  = User.objects.get(id=userid.id)
 
 
 
@@ -49,12 +56,13 @@ def listingss(request, listing_id):
     context = {"Listing": Listing,
                "category": category,
                "reviews":reviews,
-                "user":user
+
+                #"user":user
                }
     return render(request, "productlist/product.html", context)
 
 
-def search(request,listing_id):
+def search(request):
     queryset_list = listing.objects.all()
 
     if "keywords" in request.GET:
@@ -71,37 +79,10 @@ def search(request,listing_id):
     return render(request, "productlist/search.html", context)
 
 
-def gotocart(request,listing_id):
-    return render(request,"productlist/index.html")
+#def gotocart(request,listing_id):
+ #   return render(request,"productlist/index.html")
 
 """
-def addtocart(request,**kwargs):
-    product = listing.objects.filter(id=kwargs.get("id","")).first()
-    user = request.user
-    savetocart = cart(cart_id=generate_order_id(),product)
-
-
-
-    return render(request,"/product.html")
-
-def generate_order_id():
-    date_str = date.today().strftime('%Y%m%d')[2:] + str(datetime.datetime.now().second)
-    rand_str = "".join([random.choice(string.digits) for count in range(3)])
-    return date_str + rand_str
-"""
-"""
-def postreviews(request):
-    if request.method == "post":
-        post = productrev()
-        post.rhead = request.POST["reviews"]
-        post.rating = request.POST["rating"]
-        post.data = request.POST["data"]
-        post.save()
-        return render(request, "/product.html")
-    else:
-        return render(request,"/product.html")
-
-
 def post(request):
     preview = productrev()
     return render(request,"productlist/product.html",{'form':preview})
