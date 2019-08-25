@@ -82,7 +82,7 @@
                         <div class="newsletter">
                             <p><strong>Sign Up</strong></p>
 
-                            <form action="{% url'postreviews' %} " method="post">
+                            <form action="{.} " method="post">
                                 {% csrf_token %}
                                 {% include 'partial/_alerts.html' %}
                                 <div class="form-group">

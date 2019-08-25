@@ -7,6 +7,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <div id="header">
       <title>TechKart : Home</title>
@@ -20,7 +23,7 @@
                         <li><a href="{% url 'logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
                     </ul>
                     <ul class="header-links pull-right">
-                        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                        <li><button class="button" data-toggle="modal" data-target="#myModal" style="border: none; background-color: #00001a; color: white;"><i class="fa fa-user-o"></i> My Account</button></li>
                     </ul>
 
                          <div class="header-ctn">
@@ -54,11 +57,11 @@
                         <!-- /LOGO -->
 
                         <!-- SEARCH BAR -->
-                        <div class="col-md-6">
+                       <div class="col-md-6">
                             <div class="header-search">
-                                <form>
-
-                                    <input class="input" placeholder="Search here">
+                                <form action="{% url 'productlist:search' %} " method="get">
+                                {% csrf_token %}
+                                    <input class="input" placeholder="Search here" name="keywords">
                                     <button class="search-btn">Search</button>
                                 </form>
                             </div>
@@ -198,7 +201,7 @@
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">{{ alllisting.category }}</p>
-                                                <h3 class="product-name"><a href="{% url 'listing' alllisting.id %}">{{ alllisting.p_name }}</a></h3>
+                                                <h3 class="product-name"><a href="{% url 'productlist:listing' alllisting.id %}">{{ alllisting.p_name }}</a></h3>
                                                 <h4 class="product-price">Rs.{{ alllisting.price }}<del class="product-old-price">Rs. 990.00</del></h4>
                                                 <div class="product-rating">
                                                 </div>
@@ -329,7 +332,7 @@
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">{{ storage.category }}</p>
-                                                <h3 class="product-name"><a href="{% url 'listing' storage.id %}">{{ storage.p_name }}</a></h3>
+                                                <h3 class="product-name"><a href="{% url 'productlist:listing' storage.id %}">{{ storage.p_name }}</a></h3>
                                                 <h4 class="product-price">Rs.{{ storage.price }} <del class="product-old-price">Rs.{{ storage.price }}</del></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
@@ -400,7 +403,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">{{ headphones.category }}</p>
-                                        <h3 class="product-name"><a href="{% url 'listing' headphones.id %}">{{ headphones.p_name }} </a></h3>
+                                        <h3 class="product-name"><a href="{% url 'productlist:listing' headphones.id %}">{{ headphones.p_name }} </a></h3>
                                         <h4 class="product-price">Rs.{{ headphones.price }} <del class="product-old-price">Rs. 990.00</del></h4>
                                     </div>
                                 </div>
@@ -445,7 +448,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">{{ laptop.category }}</p>
-                                        <h3 class="product-name"><a href="{% url 'listing' laptop.id %}">{{ laptop.p_name }}</a></h3>
+                                        <h3 class="product-name"><a href="{% url 'productlist:listing' laptop.id %}">{{ laptop.p_name }}</a></h3>
                                         <h4 class="product-price">{{ laptop.price }} <del class="product-old-price">Rs. 990.00</del></h4>
                                     </div>
                                 </div>
@@ -482,7 +485,7 @@
                                     </div>
                                     <div class="product-body">
                                         <p class="product-category">{{ mobile.category }}</p>
-                                        <h3 class="product-name"><a href="{% url 'listing' mobile.id %}">{{ mobile.p_name }}</a></h3>
+                                        <h3 class="product-name"><a href="{% url 'productlist:listing' mobile.id %}">{{ mobile.p_name }}</a></h3>
                                         <h4 class="product-price">{{ mobile.price }}<del class="product-old-price">Rs. 990.00</del></h4>
                                     </div>
                                 </div>
@@ -543,7 +546,27 @@
         <!-- /NEWSLETTER -->
 
         <!-- FOOTER -->
-     s
+        <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
 
         <!-- jQuery Plugins -->
         <script src="{% static 'js/jquery.min.js' %}"></script>

@@ -12,7 +12,26 @@
         <title>TechKart : Product</title>
 
         <!-- Google font -->
+          <div class="col-md-6">
+                            <div class="header-search">
+                                <form action="{% url 'productlist:search' %} " method="get">
+                                {% csrf_token %}
+                                    <input class="input" placeholder="Search here" name="keywords">
+                                    <button class="search-btn">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /SEARCH BAR -->
 
+                        <!-- ACCOUNT -->
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
          <!-- NAVIGATION -->
         <nav id="navigation">
             <!-- container -->
@@ -65,7 +84,7 @@
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">{{ queryset_list.category }}</p>
-                                                <h3 class="product-name"><a href="{% url 'listing' queryset_list.id %}">{{ queryset_list.p_name }}</a></h3  >
+                                                <h3 class="product-name"><a href="{% url 'productlist:listing' queryset_list.id %}">{{ queryset_list.p_name }}</a></h3  >
                                                 <h4 class="product-price">Rs.{{ queryset_list.price }}<del class="product-old-price">Rs. 990.00</del></h4>
                                                 <div class="product-rating">
                                                 </div>
