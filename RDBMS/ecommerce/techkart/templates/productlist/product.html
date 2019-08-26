@@ -189,7 +189,8 @@
                             </div>
 
 
-
+                            <form action="{% url 'productlist:addtocart' %}" method="post">
+                                 {% csrf_token %}
                             <div class="add-to-cart">
                              <div class="qty-label">
                                     Qty
@@ -198,11 +199,11 @@
                                         <span class="qty-up">+</span>
                                         <span class="qty-down">-</span>
                                     </div>
-                                <div>
-
-                               <<a target="_self" href="{}"><strong><h4>Add To Cart</h4></strong></a>
+                                 <input type="hidden" name="listingid" value="{{ Listing.id }}">
+                                 <input type="submit" name="ADD TO CART" value="ADD TO CART">
+                               <!-- <a target="_self" href="{}"><strong><h4>Add To Cart</h4></strong></a> -->
                                 <br><br>
-
+                                </div>
 
                             </div>
                             </form>

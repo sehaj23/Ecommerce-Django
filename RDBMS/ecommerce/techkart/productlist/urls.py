@@ -5,6 +5,6 @@ urlpatterns = [
     path('',views.index,name="listings"),
     path('<int:listing_id>',views.listingss,name="listing"),
     path('search',views.search,name="search"),
-  # path('cart', views.gotocart, name="gotocart"),
+   path('addtcart', views.addtocart, name="addtocart"),
 
 ]

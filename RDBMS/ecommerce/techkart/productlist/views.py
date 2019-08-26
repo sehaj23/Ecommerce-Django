@@ -88,3 +88,12 @@ def post(request):
     return render(request,"productlist/product.html",{'form':preview})
 
 """
+
+def addtocart(request):
+    quant =  request.POST["quantity"]
+    listingid = request.POST["listingid"]
+    user = request.user
+    cart = addtocart(pid=listingid,cid=user,quantity=quant)
+    cart.save()
+
+    return render(request,"productlist/index.html")
