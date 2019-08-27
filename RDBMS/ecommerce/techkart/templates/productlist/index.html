@@ -171,14 +171,7 @@
                     <div class="col-md-12">
                         <div class="section-title">
                             <h3 class="title">New Products</h3>
-                            <div class="section-nav">
-                                <ul class="section-tab-nav tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-                                    <li><a data-toggle="tab" href="#tab1">Accessories</a></li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
 
@@ -195,21 +188,15 @@
                     <div class="product">
                                             <div class="product-img">
                                                 <img src="{{ alllisting.mainphoto.url }}" alt="">
-                                                <div class="product-label">
-                                                    <span class="sale">-30%</span>
-                                                </div>
+
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">{{ alllisting.category }}</p>
                                                 <h3 class="product-name"><a href="{% url 'productlist:listing' alllisting.id %}">{{ alllisting.p_name }}</a></h3>
-                                                <h4 class="product-price">Rs.{{ alllisting.price }}<del class="product-old-price">Rs. 990.00</del></h4>
+                                                <h4 class="product-price">Rs.{{ alllisting.price }}</h4>
                                                 <div class="product-rating">
                                                 </div>
-                                                <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                                </div>
+
                                             </div>
                                             <div class="add-to-cart">
                                                 <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
@@ -300,14 +287,7 @@
                     <div class="col-md-12">
                         <div classf="section-title">
                             <h3 class="title">Top selling</h3>
-                            <div class="section-nav">
-                                <ul class="section-tab-nav tab-nav">
-                                    <li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
-                                    <li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
-                                    <li><a data-toggle="tab" href="#tab2">Cameras</a></li>
-                                    <li><a data-toggle="tab" href="#tab2">Accessories</a></li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                     <!-- /section title -->
@@ -325,10 +305,7 @@
                                         <div class="product">
                                             <div class="product-img">
                                                 <img src="{{ storage.mainphoto.url }}" alt="">
-                                                <div class="product-label">
-                                                    <span class="sale">-30%</span>
-                                                    <span class="new">NEW</span>
-                                                </div>
+
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">{{ storage.category }}</p>
@@ -341,11 +318,7 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                 </div>
-                                                <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                                </div>
+
                                             </div>
                                             <div class="add-to-cart">
                                                 <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
@@ -357,7 +330,8 @@
 
 
             {% endfor %}
-                                             <!-- /product -->
+                                        {% endif %}
+                                        <!-- /product -->
                                     </div>
                                     <div id="slick-nav-2" class="products-slick-nav"></div>
                                           </div>
@@ -371,211 +345,271 @@
             </div>
             <!-- /container -->
         </div>
-        <!-- /SECT
-                    {% else %}
-                        <div class="col-md-12">
-                            <p>NO LISTINGS AVAILABLE</p>
-
-                    {% endif %}
-
-        <!-- SECTION -->
-        <div class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                {% if headphones  %}
-                <div class="row">
-                    <div class="col-md-4 col-xs-6">
-                        <div class="section-title">
-                            <h4 class="title">Top selling</h4>
-                            <div class="section-nav">
-                                <div id="slick-nav-3" class="products-slick-nav"></div>
-                            </div>
-                        </div>
-
-                        <div class="products-widget-slick" data-nav="#slick-nav-3">
-                            <div>
-                                {% for headphones in headphones %}
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="{{ headphones.mainphoto.url }}" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">{{ headphones.category }}</p>
-                                        <h3 class="product-name"><a href="{% url 'productlist:listing' headphones.id %}">{{ headphones.p_name }} </a></h3>
-                                        <h4 class="product-price">Rs.{{ headphones.price }} <del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
-
-                                {% endfor %}
-
-                                <!-- /product widget -->
-
-                                <!-- product widget -->
-
-                                <!-- product widget -->
-                            </div>
-                             {% else %}
-                        <div class="col-md-12">
-                            <p>NO LISTING AVAILABLE</p>
-                        </div>
-                    {% endif %}
-                            <div>
-
-
-                                <!-- /product widget -->
-
-
-                                <!-- product widget -->
-                            </div>
-                        </div>
-                    </div>
+    	<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
                     {% if laptop %}
-                    <div class="col-md-4 col-xs-6">
-                        <div class="section-title">
-                            <h4 class="title">Top selling</h4>
-                            <div class="section-nav">
-                                <div id="slick-nav-4" class="products-slick-nav"></div>
-                            </div>
-                        </div>{% for laptop in laptop %}
-                        <div class="products-widget-slick" data-nav="#slick-nav-4">
-                            <div>
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="{{ laptop.mainphoto.url }" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">{{ laptop.category }}</p>
-                                        <h3 class="product-name"><a href="{% url 'productlist:listing' laptop.id %}">{{ laptop.p_name }}</a></h3>
-                                        <h4 class="product-price">{{ laptop.price }} <del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
+					<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">Top selling</h4>
+							<div class="section-nav">
+								<div id="slick-nav-3" class="products-slick-nav"></div>
+							</div>
+						</div>
+
+						<div class="products-widget-slick" data-nav="#slick-nav-3">
+							<div>
+                                {% for laptop in laptop %}
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="{{ laptop.mainphoto.url }}" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">{{ laptop.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' laptop.id %}">{{ laptop.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ laptop.price }} </h4>
+									</div>
+								</div>
                                 {% endfor %}
 
-                                <!-- product widget -->
-                            </div>
-                        </div>
-                    </div>
                     {% else %}
-                        <div class="col-md-12">
-                            <p>NO LISTING AVAILABLE</p>
-                        </div>
-                    {% endif %}
+                    <h1>No listings found </h1>
+                {% endif %}
 
-                        {% if mobile %}
-                    <div class="clearfix visible-sm visible-xs"></div>
-                    <div class="col-md-4 col-xs-6">
-                        <div class="section-title">
-                            <h4 class="title">Top selling</h4>
-                            <div class="section-nav">
-                                <div id="slick-nav-5" class="products-slick-nav"></div>
-                            </div>
-                        </div>
+								<!-- /product widget -->
 
-                        <div class="products-widget-slick" data-nav="#slick-nav-5">
-                            <div>
-                                {% for mobile in mobile %}
-                                <!-- product widget -->
-                                <div class="product-widget">
-                                    <div class="product-img">
-                                        <img src="{{ mobile.mainphoto.url }}" alt="">
-                                    </div>
-                                    <div class="product-body">
-                                        <p class="product-category">{{ mobile.category }}</p>
-                                        <h3 class="product-name"><a href="{% url 'productlist:listing' mobile.id %}">{{ mobile.p_name }}</a></h3>
-                                        <h4 class="product-price">{{ mobile.price }}<del class="product-old-price">Rs. 990.00</del></h4>
-                                    </div>
-                                </div>
-                                <!-- /product widget -->
-                            {% endfor %}
-                                <!-- product widget -->
+							</div>
+                                {% if Smartphones %}
+							<div>
+                                {% for Smartphones in Smartphones %}
+								<!-- protduct widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="{{ Smartphones.mainphoto.url }}" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">{{ Smartphone.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' Smartphones.id %}">{{ Smartphones.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ Smartphones.price }}</h4>
+									</div>
+								</div>
+                                {% endfor %}
 
-                            </div>
-                        </div>
-                    </div>
+								<!-- product widget -->
+							</div>
+                            {% endif %}
+						</div>
+					</div>
 
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-         {% else %}
-                        <div class="col-md-12">
-                            <p>NO LISTING AVAILABLE</p>
-                        </div>
-                    {% endif %}
-        <!-- /SECTION -->
+					<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">Top selling</h4>
+							<div class="section-nav">
+								<div id="slick-nav-4" class="products-slick-nav"></div>
+							</div>
+						</div>
 
-        <!-- NEWSLETTER -->
-        <!--        <div id="newsletter" class="section">
-                     container 
-                    <div class="container">
-                         row 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="newsletter">
-                                    <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-                                    <form>
-                                        <input class="input" type="email" placeholder="Enter Your Email">
-                                        <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-                                    </form>
-                                    <ul class="newsletter-follow">
-                                        <li>
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-instagram"></i></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                         /row 
-                    </div>
-                     /container 
-                </div>-->
-        <!-- /NEWSLETTER -->
+						<div class="products-widget-slick" data-nav="#slick-nav-4">
+							<div>
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product04.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product05.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product06.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- product widget -->
+							</div>
+
+							<div>
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product07.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product08.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product09.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- product widget -->
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix visible-sm visible-xs"></div>
+
+					<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">Top selling</h4>
+							<div class="section-nav">
+								<div id="slick-nav-5" class="products-slick-nav"></div>
+							</div>
+						</div>
+
+						<div class="products-widget-slick" data-nav="#slick-nav-5">
+							<div>
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product01.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product02.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product03.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- product widget -->
+							</div>
+
+							<div>
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product04.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product05.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- /product widget -->
+
+								<!-- product widget -->
+								<div class="product-widget">
+									<div class="product-img">
+										<img src="./img/product06.png" alt="">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Category</p>
+										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+									</div>
+								</div>
+								<!-- product widget -->
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+
+
+
+
+
+
+
 
         <!-- FOOTER -->
-        <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
 
-    </div>
-  </div>
 
-</div>
 
-        <!-- jQuery Plugins -->
-        <script src="{% static 'js/jquery.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/slick.min.js' %}"></script>
-        <script src="{% static 'js/nouislider.min.j' %}s"></script>
-        <script src="{% static 'js/jquery.zoom.min.js' %}"></script>
-        <script src="{% static 'js/main.js' %}"></script>
-
-    </body>
 </html>
 {% endblock %}

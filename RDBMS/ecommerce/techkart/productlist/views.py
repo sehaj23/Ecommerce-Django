@@ -12,14 +12,14 @@ from django.contrib.auth.models import User
 
 def index(request):
     alllisting = listing.objects.all()
-    storage = listing.objects.filter(category="Storage")
-    mobile = listing.objects.filter(category="Smartphones")
-    laptop = listing.objects.filter(category="Laptops")
-    headphones = listing.objects.filter(category="headphones")
+    storage = listing.objects.filter(category="storage")[:3]
+    Smartphones = listing.objects.filter(category="Smartphones")[:3]
+    laptop = listing.objects.filter(category="Laptops")[:3]
+    headphones = listing.objects.filter(category="headphones")[:3]
 
     context = {"alllisting": alllisting,
                "storage": storage,
-               "mobile": mobile,
+               "Smartphones": Smartphones,
                "laptop": laptop,
                "headphones": headphones
                }
