@@ -189,7 +189,7 @@
                             </div>
 
 
-                            <form action="{% url 'productlist:addtocart' %}" method="post">
+                            <form action="{% url 'cart:addtocart' %}" method="post">
                                  {% csrf_token %}
                             <div class="add-to-cart">
                              <div class="qty-label">

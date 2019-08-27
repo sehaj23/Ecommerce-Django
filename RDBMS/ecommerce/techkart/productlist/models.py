@@ -29,10 +29,5 @@ class productreviews(models.Model):
     class meta:
         db_table = "Productreviews"
 
-class addtocart(models.Model):
-    aid = models.IntegerField(max_length=20,primary_key=True)
-    pid = models.ForeignKey(listing, on_delete=models.CASCADE)
-    cid = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    quantity = models.IntegerField(max_length=20)
 
 

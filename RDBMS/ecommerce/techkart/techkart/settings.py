@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'productlist.apps.ProductlistConfig',
+    'cart.apps.CartConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,7 +129,7 @@ USE_TZ = True
 
 
 
-#STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 STATIC_URL = '/static/'
 

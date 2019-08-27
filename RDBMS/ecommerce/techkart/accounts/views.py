@@ -40,7 +40,7 @@ def login(request):
         if user is not None:
             auth.login(request,user)
             messages.success(request,"Successfully logged in")
-            return redirect("listings")
+            return redirect("productlist:listings")
         else:
             messages.error(request,"Invalid Credentials")
             return redirect("login")
@@ -49,4 +49,4 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return render(request,"productlist/index.html")
+    return redirect("productlist:listings")

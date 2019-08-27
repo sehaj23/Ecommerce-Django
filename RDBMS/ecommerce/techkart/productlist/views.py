@@ -89,11 +89,5 @@ def post(request):
 
 """
 
-def addtocart(request):
-    quant =  request.POST["quantity"]
-    listingid = request.POST["listingid"]
-    user = request.user
-    cart = addtocart(pid=listingid,cid=user,quantity=quant)
-    cart.save()
 
-    return render(request,"productlist/index.html")
+
