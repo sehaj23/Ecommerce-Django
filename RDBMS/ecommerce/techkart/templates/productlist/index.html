@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +10,7 @@
         <link rel="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="{% static 'js/jquery.js' %}"></script>
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <div id="header">
       <title>TechKart : Home</title>
@@ -241,25 +242,25 @@
                             <ul class="hot-deal-countdown">
                                 <li>
                                     <div>
-                                        <h3>02</h3>
+                                        <h3 id="days"></h3>
                                         <span>Days</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <h3>10</h3>
+                                        <h3 id="hours"></h3>
                                         <span>Hours</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <h3>34</h3>
+                                        <h3 id="mins"></h3>
                                         <span>Mins</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <h3>60</h3>
+                                        <h3 id="secs"></h3>
                                         <span>Secs</span>
                                     </div>
                                 </li>
@@ -598,15 +599,7 @@
 			</div>
 			<!-- /container -->
 		</div>
-
-
-
-
-
-
-
-
-        <!-- FOOTER -->
+    <!-- FOOTER -->
 
 
 
