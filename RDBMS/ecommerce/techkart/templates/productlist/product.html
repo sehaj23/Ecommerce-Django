@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <div id="header">
-      <title>TechKart : Home</title>
+      <title>TechKart : All Products</title>
                 <!-- container -->
                 <div class="container">
                     <!-- row -->
@@ -45,7 +45,7 @@
                         <!-- LOGO -->
                         <div class="col-md-3">
                             <div class="header-logo">
-                                <a href="#" class="logo">
+                                <a href="{% url 'productlist:listings' %}" class="logo">
                                     <img src="{% static './img/logoo.png' %}" alt="" height="75px" width="75px">
                                 </a>
                             </div>

@@ -89,5 +89,14 @@ def post(request):
 
 """
 
+def laptop(request):
+    laptop = listing.objects.filter(category="Laptops")[:5]
+    laptops = listing.objects.filter(category="Laptops")[5:10]
+    context = {
+            "laptop":laptop,
+            "laptops": laptops
+
+    }
+    return render(request,"productlist/laptop.html",context)
 
 
