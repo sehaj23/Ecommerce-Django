@@ -6,6 +6,8 @@ urlpatterns = [
     path('<int:listing_id>',views.listingss,name="listing"),
     path('search',views.search,name="search"),
     path('laptop',views.laptop,name="laptop"),
+    path('camera', views.camera, name="camera"),
+
 
 
 ]

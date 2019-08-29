@@ -95,7 +95,7 @@
                         <li><a href="#">Hot Deals</a></li>
                         <li><a href="{% url 'productlist:laptop' %}">Laptops</a></li>
                         <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Cameras</a></li>
+                        <li><a href="{% url 'productlist:camera' %}">Cameras</a></li>
                         <li><a href="#">Accessories</a></li>
                     </ul>
                     <!-- /NAV -->
@@ -115,12 +115,13 @@
                     <!-- shop -->
                     <div class="col-md-4 col-xs-6">
                         <div class="shop">
+                            <a href="{% url 'productlist:laptop' %}">
                             <div class="shop-img">
                                 <img src="{% static './img/shop01.png' %}"  alt="">
-                            </div>
+                            </div></a>
                             <div class="shop-body">
                                 <h3>Laptop<br>Collection</h3>
-                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="{% url 'productlist:laptop' %}" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -141,17 +142,22 @@
                     <!-- /shop -->
 
                     <!-- shop -->
+
                     <div class="col-md-4 col-xs-6">
                         <div class="shop">
+                              <a href="{% url 'productlist:camera' %}">
                             <div class="shop-img">
+
                                 <img src="{% static './img/shop02.png' %}" alt="">
                             </div>
+                              </a>
                             <div class="shop-body">
                                 <h3>Cameras<br>Collection</h3>
-                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="{% url 'productlist:camera' %}" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
+
                     <!-- /shop -->
                 </div>
                 <!-- /row -->
@@ -186,10 +192,12 @@
                         {% for alllisting in alllisting %}
                      <!-- Products tab & slick -->
                     <div class="product">
+                        <a href="{% url 'productlist:listing' alllisting.id %}">
                                             <div class="product-img">
+
                                                 <img src="{{ alllisting.mainphoto.url }}" alt="">
 
-                                            </div>
+                                            </div></a>
                                             <div class="product-body">
                                                 <p class="product-category">{{ alllisting.category }}</p>
                                                 <h3 class="product-name"><a href="{% url 'productlist:listing' alllisting.id %}">{{ alllisting.p_name }}</a></h3>
@@ -198,9 +206,14 @@
                                                 </div>
 
                                             </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                            </div>
+                                             <form name="addtocart" action="{% url 'cart:addtocart' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ alllisting.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
                                         </div>
 
                 <!-- /row -->
@@ -286,7 +299,7 @@
                     <!-- section title -->
                     <div class="col-md-12">
                         <div classf="section-title">
-                            <h3 class="title">Top selling</h3>
+                            <h3 class="title">TOP SELLING</h3>
 
                         </div>
                     </div>
@@ -303,10 +316,11 @@
 
                                         <!-- product -->
                                         <div class="product">
+                                            <a href="{% url 'productlist:listing' storage.id %}">
                                             <div class="product-img">
                                                 <img src="{{ storage.mainphoto.url }}" alt="">
 
-                                            </div>
+                                            </div></a>
                                             <div class="product-body">
                                                 <p class="product-category">{{ storage.category }}</p>
                                                 <h3 class="product-name"><a href="{% url 'productlist:listing' storage.id %}">{{ storage.p_name }}</a></h3>
@@ -354,7 +368,7 @@
                     {% if laptop %}
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Top selling</h4>
+							<h4 class="title">TOP SELLING</h4>
 							<div class="section-nav">
 								<div id="slick-nav-3" class="products-slick-nav"></div>
 							</div>
@@ -365,9 +379,10 @@
                                 {% for laptop in laptop %}
 								<!-- product widget -->
 								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' laptop.id %}">
 									<div class="product-img">
 										<img src="{{ laptop.mainphoto.url }}" alt="">
-									</div>
+									</div></a>
 									<div class="product-body">
 										<p class="product-category">{{ laptop.category }}</p>
 										<h3 class="product-name"><a href="{% url 'productlist:listing' laptop.id %}">{{ laptop.p_name }}</a></h3>
@@ -388,9 +403,10 @@
                                 {% for Smartphones in Smartphones %}
 								<!-- protduct widget -->
 								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' Smartphones.id %}">
 									<div class="product-img">
 										<img src="{{ Smartphones.mainphoto.url }}" alt="">
-									</div>
+									</div></a>
 									<div class="product-body">
 										<p class="product-category">{{ Smartphone.category }}</p>
 										<h3 class="product-name"><a href="{% url 'productlist:listing' Smartphones.id %}">{{ Smartphones.p_name }}</a></h3>
@@ -404,10 +420,10 @@
                             {% endif %}
 						</div>
 					</div>
-
+                    {% if headphones %}
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Top selling</h4>
+							<h4 class="title">TOP SELLING</h4>
 							<div class="section-nav">
 								<div id="slick-nav-4" class="products-slick-nav"></div>
 							</div>
@@ -415,86 +431,49 @@
 
 						<div class="products-widget-slick" data-nav="#slick-nav-4">
 							<div>
+                                {% for headphones in headphones %}
 								<!-- product widget -->
 								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' headphones.id %}">
 									<div class="product-img">
-										<img src="./img/product04.png" alt="">
-									</div>
+										<img src="{{ headphones.mainphoto.url }}" alt="">
+									</div></a>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<p class="product-category">{{ headphones.category}} </p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' headphones.id %}">{{ headphones.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ headphones.price }}</h4>
 									</div>
-								</div>
-								<!-- /product widget -->
+								{% endfor %}
+                                {% endif %}
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product05.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product06.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
+
+
+                                </div>
+
+
 							</div>
 
 							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product07.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product08.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
 
-								<!-- product widget -->
+								{% if laptops %}
+                                {% for laptops in laptops %}
 								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' laptops.id %}">
 									<div class="product-img">
-										<img src="./img/product09.png" alt="">
-									</div>
+										<img src="{{ laptops.mainphoto.url }}" alt="">
+									</div></a>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<p class="product-category">{{ laptops.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' laptops.id %}">{{ laptops.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ laptops.price }}</h4>
 									</div>
 								</div>
+                                {% endfor %}
 								<!-- product widget -->
 							</div>
+                            {% endif %}
 						</div>
 					</div>
 
@@ -502,95 +481,62 @@
 
 					<div class="col-md-4 col-xs-6">
 						<div class="section-title">
-							<h4 class="title">Top selling</h4>
+							<h4 class="title">Top SELLING</h4>
 							<div class="section-nav">
 								<div id="slick-nav-5" class="products-slick-nav"></div>
 							</div>
 						</div>
-
+                        {% if storage %}
 						<div class="products-widget-slick" data-nav="#slick-nav-5">
+
+                            <div>
+							    {% for storage in storage %}
+								<!-- product widget -->
+								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' storage.id %}">
+									<div class="product-img">
+										<img src="{{ storage.mainphoto.url }}" alt="">
+									</div></a>
+									<div class="product-body">
+										<p class="product-category">{{ storage.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' storage.id %}">{{ storage.p_name }}</a></h3>
+										<h4 class="product-price">₹ {{ storage.price }} </h4>
+									</div>
+								</div>
+                                {% endfor %}
+								<!-- /product widget -->
+                            {% else %}
+                                <h1>NO PRODUCTS TO SHOW</h1>
+
+								<!-- product widget -->
+
+							</div>
+                            {% endif %}
+                        </div>
+
+                            {% if Smartphone %}
 							<div>
 								<!-- product widget -->
+                                {% for Smartphone in Smartphone %}
 								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' Smartphone.id %}">
 									<div class="product-img">
-										<img src="./img/product01.png" alt="">
-									</div>
+										<img src="{{ Smartphone.mainphoto.url }}" alt="">
+									</div></a>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+										<p class="product-category">{{ Smartphone.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' Smartphone.id %}">{{ Smartphone.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ Smartphone.price }} </h4>
 									</div>
 								</div>
+                                {% endfor %}
 								<!-- /product widget -->
+                                {% else %}
+                                <h1>NO PRODUCTS TO SHOW</h1>
 
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product02.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product03.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
 							</div>
-
-							<div>
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product04.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product05.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- /product widget -->
-
-								<!-- product widget -->
-								<div class="product-widget">
-									<div class="product-img">
-										<img src="./img/product06.png" alt="">
-									</div>
-									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-									</div>
-								</div>
-								<!-- product widget -->
-							</div>
-						</div>
+						    {% endif %}
+                        </div>
 					</div>
 
 				</div>

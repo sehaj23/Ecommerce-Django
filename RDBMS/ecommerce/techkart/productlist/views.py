@@ -16,12 +16,16 @@ def index(request):
     Smartphones = listing.objects.filter(category="Smartphones")[:3]
     laptop = listing.objects.filter(category="Laptops")[:3]
     headphones = listing.objects.filter(category="headphones")[:3]
+    Smartphone = listing.objects.filter(category="Smartphones")[3:6]
+    laptops = listing.objects.filter(category="Laptops")[4:7]
 
     context = {"alllisting": alllisting,
                "storage": storage,
                "Smartphones": Smartphones,
                "laptop": laptop,
-               "headphones": headphones
+               "headphones": headphones,
+               "Smartphone":Smartphone,
+               "laptops":laptops
                }
 
     return render(request, "productlist/index.html", context)
@@ -90,7 +94,7 @@ def post(request):
 """
 
 def laptop(request):
-    laptop = listing.objects.filter(category="Laptops")[:5]
+    laptop = listing.objects.filter(category="Laptops")[0:5]
     laptops = listing.objects.filter(category="Laptops")[5:10]
     context = {
             "laptop":laptop,
@@ -98,5 +102,15 @@ def laptop(request):
 
     }
     return render(request,"productlist/laptop.html",context)
+
+def camera(request):
+    cameras = listing.objects.filter(category="Cameras")[0:5]
+    camera = listing.objects.filter(category="Cameras")[5:10    ]
+    context = {
+        "cameras":cameras,
+        "camera":camera,
+
+    }
+    return render(request,"productlist/camera.html",context)
 
 
