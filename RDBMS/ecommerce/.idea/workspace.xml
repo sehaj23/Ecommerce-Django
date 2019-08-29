@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8daacdca-eef6-4d37-a4f2-5b22ba9a960a" name="Default Changelist" comment="index page partly working timer working">
+    <list default="true" id="8daacdca-eef6-4d37-a4f2-5b22ba9a960a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/productlist/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/productlist/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/productlist/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/productlist/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/templates/admin/base_Site.html" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/templates/admin/base_Site.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/templates/productlist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/templates/productlist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/templates/productlist/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/templates/productlist/product.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -438,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567053814531</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="index page done">
+      <created>1567111862980</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1567111862980</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -451,7 +453,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18973215" />
@@ -500,7 +502,8 @@
     <MESSAGE value="add to cart working all user not being fetched" />
     <MESSAGE value="index page partly working" />
     <MESSAGE value="index page partly working timer working" />
-    <option name="LAST_COMMIT_MESSAGE" value="index page partly working timer working" />
+    <MESSAGE value="index page done" />
+    <option name="LAST_COMMIT_MESSAGE" value="index page done" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/baselog.html" />
