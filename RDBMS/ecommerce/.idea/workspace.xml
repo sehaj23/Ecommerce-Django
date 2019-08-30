@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8daacdca-eef6-4d37-a4f2-5b22ba9a960a" name="Default Changelist" comment="">
+    <list default="true" id="8daacdca-eef6-4d37-a4f2-5b22ba9a960a" name="Default Changelist" comment="accessroies completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/productlist/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/productlist/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/productlist/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/productlist/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techkart/templates/productlist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/techkart/templates/productlist/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/techkart/productlist/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="120" column="20" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="20" />
+            <state relative-caret-position="221">
+              <caret line="130" column="20" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="20" />
               <folding>
                 <element signature="e#2#101#0" expanded="true" />
               </folding>
@@ -40,10 +37,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/accessories.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3116">
+              <caret line="213" column="51" selection-start-line="213" selection-start-column="51" selection-end-line="213" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="96" column="72" selection-start-line="96" selection-start-column="72" selection-end-line="96" selection-end-column="72" />
+            <state relative-caret-position="119">
+              <caret line="97" column="44" lean-forward="true" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
               <folding>
                 <element signature="n#style#0;n#button#0;n#li#0;n#ul#1;n#div#0;n#div#0;n#div#0;n#head#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -51,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/smartphones.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="220" column="51" selection-start-line="220" selection-start-column="51" selection-end-line="220" selection-end-column="51" />
+            <state relative-caret-position="272">
+              <caret line="145" column="51" lean-forward="true" selection-start-line="138" selection-start-column="43" selection-end-line="145" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -72,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/laptop.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="1649">
               <caret line="97" column="14" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="97" selection-end-column="14" />
             </state>
           </provider>
@@ -173,11 +179,11 @@
         <option value="$PROJECT_DIR$/techkart/templates/productlist/laptop.html" />
         <option value="$PROJECT_DIR$/techkart/templates/productlist/camera.html" />
         <option value="$PROJECT_DIR$/techkart/templates/productlist/product.html" />
-        <option value="$PROJECT_DIR$/techkart/templates/productlist/accessories.html" />
         <option value="$PROJECT_DIR$/techkart/productlist/urls.py" />
-        <option value="$PROJECT_DIR$/techkart/templates/productlist/index.html" />
         <option value="$PROJECT_DIR$/techkart/productlist/views.py" />
         <option value="$PROJECT_DIR$/techkart/templates/productlist/smartphones.html" />
+        <option value="$PROJECT_DIR$/techkart/templates/productlist/index.html" />
+        <option value="$PROJECT_DIR$/techkart/templates/productlist/accessories.html" />
       </list>
     </option>
   </component>
@@ -438,7 +444,21 @@
       <option name="project" value="LOCAL" />
       <updated>1567112583506</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="index page done">
+      <created>1567141013164</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1567141013164</updated>
+    </task>
+    <task id="LOCAL-00020" summary="accessroies completed">
+      <created>1567143133981</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1567143133981</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -501,7 +521,8 @@
     <MESSAGE value="index page partly working" />
     <MESSAGE value="index page partly working timer working" />
     <MESSAGE value="index page done" />
-    <option name="LAST_COMMIT_MESSAGE" value="index page done" />
+    <MESSAGE value="accessroies completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="accessroies completed" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/django/db/backends/utils.py">
@@ -787,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/accessories.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/techkart/productlist/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -804,23 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="96" column="72" selection-start-line="96" selection-start-column="72" selection-end-line="96" selection-end-column="72" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#li#0;n#ul#1;n#div#0;n#div#0;n#div#0;n#head#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/laptop.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="97" column="14" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="97" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/product.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-723">
@@ -828,20 +825,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/smartphones.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="145" column="51" lean-forward="true" selection-start-line="138" selection-start-column="43" selection-end-line="145" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/laptop.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1649">
+          <caret line="97" column="14" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="97" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/techkart/productlist/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="120" column="20" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="20" />
+        <state relative-caret-position="221">
+          <caret line="130" column="20" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="20" />
           <folding>
             <element signature="e#2#101#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/smartphones.html">
+    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/accessories.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="220" column="51" selection-start-line="220" selection-start-column="51" selection-end-line="220" selection-end-column="51" />
+        <state relative-caret-position="3116">
+          <caret line="213" column="51" selection-start-line="213" selection-start-column="51" selection-end-line="213" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/techkart/templates/productlist/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="97" column="44" lean-forward="true" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#li#0;n#ul#1;n#div#0;n#div#0;n#div#0;n#head#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
