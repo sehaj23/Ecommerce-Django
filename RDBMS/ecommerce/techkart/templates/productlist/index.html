@@ -21,7 +21,7 @@
                         <!--my account -->
                         {% if user.is_authenticated %}
                            <ul class="header-links pull-right">
-                        <li><a href="{% url 'logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
+                        <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
                     </ul>
                     <ul class="header-links pull-right">
                         <li><button class="button" data-toggle="modal" data-target="#myModal" style="border: none; background-color: #00001a; color: white;"><i class="fa fa-user-o"></i> My Account</button></li>
@@ -39,10 +39,10 @@
                          </div>
                         {% else %}
                              <ul class="header-links pull-right">
-                        <li><a href="{% url 'login' %}"><i class="fa fa-user-o"></i> Login</a></li>
+                        <li><a href="{% url 'accounts:login' %}"><i class="fa fa-user-o"></i> Login</a></li>
                         </ul>
                         <ul class="header-links pull-right">
-                        <li><a href="{% url 'register' %}"><i class="fa fa-user-o"></i> Register</a></li>
+                        <li><a href="{% url 'accounts:register' %}"><i class="fa fa-user-o"></i> Register</a></li>
                     </ul>
 
                         {% endif %}
@@ -279,7 +279,7 @@
                             </ul>
                             <h2 class="text-uppercase">hot deal this week</h2>
                             <p>New Collection Up to 50% OFF</p>
-                            <a class="primary-btn cta-btn" href="#">Shop now</a>
+                            <a class="primary-btn cta-btn" href="{% url 'productlist:hotdeals' %}">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -324,19 +324,20 @@
                                             <div class="product-body">
                                                 <p class="product-category">{{ storage.category }}</p>
                                                 <h3 class="product-name"><a href="{% url 'productlist:listing' storage.id %}">{{ storage.p_name }}</a></h3>
-                                                <h4 class="product-price">Rs.{{ storage.price }} <del class="product-old-price">Rs.{{ storage.price }}</del></h4>
+                                                <h4 class="product-price">₹{{ storage.price }} </del></h4>
                                                 <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
+
                                                 </div>
 
                                             </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                            </div>
+                                                <form name="addtocart" action="{% url 'cart:addtocart' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ storage.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
                                         </div>
                                         <!-- /product -->
 

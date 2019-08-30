@@ -3,16 +3,52 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <div id="header">
+      <title>TechKart : Laptop</title>
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <!--my account -->
+                        {% if user.is_authenticated %}
+                           <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
+                    </ul>                         <ul class="header-links pull-right">
+                        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    </ul>
 
-        <title>TechKart : Search</title>
+                         <div class="header-ctn">
+                          <div class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <span>Your Cart</span>
+                                        <div class="qty"></div>
+                                    </a>
 
-        <!-- Google font -->
-          <div class="col-md-6">
+                                </div>
+                         </div>
+                        {% else %}
+                             <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:login' %}"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                        <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:register' %}"><i class="fa fa-user-o"></i> Register</a></li>
+                    </ul>
+
+                        {% endif %}
+                        <!-- LOGO -->
+                        <div class="col-md-3">
+                            <div class="header-logo">
+                                <a href="{% url 'productlist:listings' %}" class="logo">
+                                    <img src="{% static './img/logoo.png' %}" alt="" height="75px" width="75px">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- /LOGO -->
+
+                        <!-- SEARCH BAR -->
+                        <div class="col-md-6">
                             <div class="header-search">
                                 <form action="{% url 'productlist:search' %} " method="get">
                                 {% csrf_token %}
@@ -32,14 +68,18 @@
                             </div>
                         </div>
                     </div>
-         <!-- NAVIGATION -->
+
+</head>
+        <!-- /HEADER -->
+
+        <!-- NAVIGATION -->
         <nav id="navigation">
             <!-- container -->
             <div class="container">
                 <!-- responsive-nav -->
                 <div id="responsive-nav">
                     <!-- NAV -->
-                   <ul class="main-nav nav navbar-nav">
+                     <ul class="main-nav nav navbar-nav">
                         <li><a href="{% url 'productlist:listings' %}">Home</a></li>
                         <li><a href="{% url 'productlist:hotdeals' %}">Hot Deals</a></li>
                         <li><a href="{% url 'productlist:laptop' %}">Laptops</a></li>
@@ -53,6 +93,8 @@
             </div>
             <!-- /container -->
         </nav>
+        <!-- /NAVIGATION -->
+
         <!-- /NAVIGATION -->
 
         <!-- SECTION -->
@@ -78,24 +120,28 @@
                                             <div class="product-img">
                                                 <img src="{{ queryset_list.mainphoto.url }}" alt="">
                                                 <div class="product-label">
-                                                    <span class="sale">-30%</span>
+
                                                 </div>
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">{{ queryset_list.category }}</p>
                                                 <h3 class="product-name"><a href="{% url 'productlist:listing' queryset_list.id %}">{{ queryset_list.p_name }}</a></h3  >
-                                                <h4 class="product-price">Rs.{{ queryset_list.price }}<del class="product-old-price">Rs. 990.00</del></h4>
+                                                <h4 class="product-price">Rs.{{ queryset_list.price }}</h4>
                                                 <div class="product-rating">
                                                 </div>
                                                 <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+
                                                 </div>
                                             </div>
-                                            <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                            </div>
+
+                                            <form name="addtocart" action="{% url 'cart:addtocart' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ Smartphone.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
                                         </div>
 
                 <!-- /row -->

@@ -16,17 +16,17 @@ def register(request):
         if password==cpassword:
             if User.objects.filter(email=email).exists():
                 messages.error(request,"Email ID already registered")
-                return redirect('register')
+                return redirect('productlist:register')
             else:
                 user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password)
                 user.save()
                 #login after register
                 auth.login(request,user)
                 messages.success(request,"You are now Logged in")
-                return redirect('listings')
+                return redirect('productlist:listings')
         else:
             messages.error(request,"password does not match")
-            return redirect('register')
+            return redirect('accounts:register')
 
     else:
         return render(request,"accounts/register.html")
@@ -43,7 +43,7 @@ def login(request):
             return redirect("productlist:listings")
         else:
             messages.error(request,"Invalid Credentials")
-            return redirect("login")
+            return redirect("accounts:login")
     else:
         return render(request,"accounts/login.html")
 

@@ -34,10 +34,10 @@
                          </div>
                         {% else %}
                              <ul class="header-links pull-right">
-                        <li><a href="{% url 'login' %}"><i class="fa fa-user-o"></i> Login</a></li>
+                        <li><a href="{% url 'accounts:login' %}"><i class="fa fa-user-o"></i> Login</a></li>
                         </ul>
                         <ul class="header-links pull-right">
-                        <li><a href="{% url 'register' %}"><i class="fa fa-user-o"></i> Register</a></li>
+                        <li><a href="{% url 'accounts:register' %}"><i class="fa fa-user-o"></i> Register</a></li>
                     </ul>
 
                         {% endif %}
@@ -86,7 +86,7 @@
                     <div class="col-md-12">
                         <div class="newsletter">
 
-                            <form method="post" action="{% url 'login' %}">
+                            <form method="post" action="{% url 'accounts:login' %}">
                                 {% csrf_token %}
 
                                 <div class="form-group">
@@ -102,7 +102,7 @@
                                     <label class="form-check-label" for="exampleCheck1">Keep me Logged In</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Log In</button><br><br>
-                                <h5>New User ! Click Here<a href="{% url 'register' %}" style="color: red;"><i> Sign Up<i></a><h5>
+                                <h5>New User ! Click Here<a href="{% url 'accounts:register' %}" style="color: red;"><i> Sign Up<i></a><h5>
                                 <div class="form-group" style="margin-left: 25%;">
         <!--                        <div class="loginBtn loginBtn--facebook">Continue with Facebook</div>-->
                                     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" style ="margin-left: 18%"></div>

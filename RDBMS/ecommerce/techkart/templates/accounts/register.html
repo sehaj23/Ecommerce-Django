@@ -17,7 +17,7 @@
                         <!--my account -->
                         {% if user.is_authenticated %}
                            <ul class="header-links pull-right">
-                        <li><a href="{% url 'logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
+                        <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
                     </ul>                         <ul class="header-links pull-right">
                         <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
                     </ul>
@@ -34,7 +34,7 @@
                          </div>
                         {% else %}
                              <ul class="header-links pull-right">
-                        <li><a href="{% url 'login' %}"><i class="fa fa-user-o"></i> Login</a></li>
+                        <li><a href="{% url 'accounts:login' %}"><i class="fa fa-user-o"></i> Login</a></li>
                         </ul>
 
 
@@ -82,7 +82,7 @@
                         <div class="newsletter">
                             <p><strong>Sign Up</strong></p>
 
-                            <form action="{.} " method="post">
+                            <form action="{% url 'accounts:register' %} " method="post">
                                 {% csrf_token %}
                                 {% include 'partial/_alerts.html' %}
                                 <div class="form-group">
