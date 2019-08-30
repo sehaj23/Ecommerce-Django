@@ -105,7 +105,7 @@ def laptop(request):
 
 def camera(request):
     cameras = listing.objects.filter(category="Cameras")[0:5]
-    camera = listing.objects.filter(category="Cameras")[5:10    ]
+    camera = listing.objects.filter(category="Cameras")[5:10]
     context = {
         "cameras":cameras,
         "camera":camera,
@@ -113,4 +113,24 @@ def camera(request):
     }
     return render(request,"productlist/camera.html",context)
 
+def smartphones(request):
+    Smartphones = listing.objects.filter(category="Smartphones")[0:5]
+    Smartphone = listing.objects.filter(category="Smartphones")[5:10]
+    context = {
+        "Smartphone": Smartphone,
+        "Smartphones":Smartphones
 
+
+    }
+    return render(request,"productlist/smartphones.html",context)
+
+def accessories(request):
+    accessories = listing.objects.filter(category="accessories")[0:5]
+    accessorie = listing.objects.filter(category="accessories")[5:10]
+    context = {
+        "accessories": accessories,
+        "accessorie":accessorie,
+
+
+    }
+    return render(request,"productlist/accessories.html",context)

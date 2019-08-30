@@ -7,6 +7,8 @@ urlpatterns = [
     path('search',views.search,name="search"),
     path('laptop',views.laptop,name="laptop"),
     path('camera', views.camera, name="camera"),
+    path('smartphones',views.smartphones,name="smartphones"),
+    path('accessories',views.accessories,name="accessories"),
 
 
 
