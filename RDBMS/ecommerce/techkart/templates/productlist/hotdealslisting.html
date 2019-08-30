@@ -116,19 +116,19 @@
                     <div class="col-md-5 col-md-push-2">
                         <div id="product-main-img">
                             <div class="product-preview">
-                                <img src="{{ Listing.mainphoto.url }}"  height="500" width="50" alt="">
+                                <img src="{{ deals.mainphoto.url }}" height="500" width="50" alt="">
                             </div>
 
                             <div class="product-preview">
-                                <img src="Listing.photo1.url " alt="">
+                                <img src="deals.photo1.url " alt="">
                             </div>
 
                             <div class="product-preview">
-                                <img src=" Listing.photo2.url " alt="">
+                                <img src=" deals.photo2.url " alt="">
                             </div>
 
                             <div class="product-preview">
-                                <img src=" Listing.photo1.url " alt="">
+                                <img src=" deals.photo1.url " alt="">
                             </div>
                         </div>
                     </div>
@@ -138,11 +138,11 @@
                     <div class="col-md-2  col-md-pull-5">
                         <div id="product-imgs">
                             <div class="product-preview">
-                                <img src="./img/product01.png" alt="">
+                                <img src="{{ deal.mainphoto.url }}"  alt="">
                             </div>
 
                             <div class="product-preview">
-                                <img src="./img/product03.png" alt="">
+                                <img src="{}" alt="">
                             </div>
 
                             <div class="product-preview">
@@ -159,22 +159,16 @@
                     <!-- Product details -->
                     <div class="col-md-5">
                         <div class="product-details">
-                            <h2 class="product-name">{{ Listing.p_name }}</h2>
+                            <h2 class="product-name">{{ deals.p_name }}</h2>
                             <div>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
+
 
                             </div>
                             <div>
-                                <h3 class="product-price">{{ Listing.price }}</h3>
+                                <h3 class="product-price">{{ deals.price }}<del class="product-old-price">₹{{ deals.oldprice }}</del></h3>
                                 <span class="product-available">In Stock</span>
                             </div>
-                            <p>{{ Listing.description }}.</p>
+                            <p>{{ deals.description }}.</p>
 
                             <div class="product-options">
 
@@ -182,7 +176,7 @@
                                     Color
                                     <select class="input-select">
                                         <option>Select</option>
-                                        <option value="0">{{ Listing.p_color }} </option>
+                                        <option value="0">{{ deals.p_color }} </option>
 
                                     </select>
                                 </label>
@@ -230,7 +224,7 @@
                                 <div id="tab1" class="tab-pane fade in active">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>{{ Listing.description }}.</p>
+                                            <p>{{ deals.description }}.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -240,7 +234,7 @@
                                 <div id="tab2" class="tab-pane fade in">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p>{{ Listing.p_specification }}</p>
+                                            <p>{{ deals.p_specification }}</p>
                                         </div>
                                     </div>
                                 </div>

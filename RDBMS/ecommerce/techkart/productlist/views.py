@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect,HttpResponseRedirect
 
-from .models import listing, productreviews
+from .models import listing, productreviews,hotdeals
 
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
@@ -134,3 +134,32 @@ def accessories(request):
 
     }
     return render(request,"productlist/accessories.html",context)
+def hotdealss(request):
+
+    deal = hotdeals.objects.all()[:5]
+    deals = hotdeals.objects.all()[5:10]
+    context = {
+        "deal": deal,
+        "deals":deals,
+
+
+
+    }
+    return render(request,"productlist/hotdeals.html",context)
+
+def hotdealsinfo(request, hotdeals_id):
+
+    deals = get_object_or_404(hotdeals, pk=hotdeals_id)
+    #deals = hotdeals.objects.filter(pk=hotdeals_id)
+
+
+
+
+
+
+    context = {"deals": deals,
+     #          "category": category,
+
+
+    }
+    return render(request, "productlist/hotdealslisting.html",context)

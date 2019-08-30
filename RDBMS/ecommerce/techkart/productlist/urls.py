@@ -9,6 +9,8 @@ urlpatterns = [
     path('camera', views.camera, name="camera"),
     path('smartphones',views.smartphones,name="smartphones"),
     path('accessories',views.accessories,name="accessories"),
+    path('hotdeals',views.hotdealss,name="hotdeals"),
+    path('hotdeals<int:hotdeals_id>',views.hotdealsinfo,name="hotdealsinfo"),
 
 
 

@@ -29,11 +29,11 @@
 
                          <div class="header-ctn">
                           <div class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span>Your Cart</span>
-                                        <div class="qty"></div>
-                                    </a>
+
+                                        <a href="{% url 'cart:opencart' %}" class="fa fa-shopping-cart"></input>
+                                        <span>Your Cart</span></a>
+
+
 
                                 </div>
                          </div>
@@ -92,7 +92,7 @@
                     <!-- NAV -->
                     <ul class="main-nav nav navbar-nav">
                         <li class="active"><a href="{% url 'productlist:listings' %}">Home</a></li>
-                        <li><a href="#">Hot Deals</a></li>
+                        <li><a href="{% url 'productlist:hotdeals' %}">Hot Deals</a></li>
                         <li><a href="{% url 'productlist:laptop' %}">Laptops</a></li>
                         <li><a href="{% url 'productlist:smartphones' %}">Smartphones</a></li>
                         <li><a href="{% url 'productlist:camera' %}">Cameras</a></li>
@@ -129,13 +129,13 @@
 
                     <!-- shop -->
                     <div class="col-md-4 col-xs-6">
-                        <div class="shop">
+                        <div class="shop"><a href="{% url 'productlist:accessories' %}">
                             <div class="shop-img">
                                 <img src="{% static './img/shop03.png' %}" alt="">
-                            </div>
+                            </div></a>
                             <div class="shop-body">
                                 <h3>Accessories<br>Collection</h3>
-                                <a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+                                <a href="{% url 'productlist:accessories' %}" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                         <a href="{% url 'productlist:listing' alllisting.id %}">
                                             <div class="product-img">
 
-                                                <img src="{{ alllisting.mainphoto.url }}" alt="">
+                                                <img src="{{ alllisting.mainphoto.url }}"  height="300" width="150" alt="">
 
                                             </div></a>
                                             <div class="product-body">
@@ -318,7 +318,7 @@
                                         <div class="product">
                                             <a href="{% url 'productlist:listing' storage.id %}">
                                             <div class="product-img">
-                                                <img src="{{ storage.mainphoto.url }}" alt="">
+                                                <img src="{{ storage.mainphoto.url }}" height="300" width="150" alt="">
 
                                             </div></a>
                                             <div class="product-body">

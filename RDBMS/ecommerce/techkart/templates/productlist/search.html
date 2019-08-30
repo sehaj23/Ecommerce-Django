@@ -39,14 +39,13 @@
                 <!-- responsive-nav -->
                 <div id="responsive-nav">
                     <!-- NAV -->
-                    <ul class="main-nav nav navbar-nav">
-                        <li ><a href="index.html">Home</a></li>
-                        
-                       
-                        <li><a href="laptop.html">Laptops</a></li>
-                        <li><a href="smartphones.html">Smartphones</a></li>
-                        <li ><a href="cameras.html">Cameras</a></li>
-                        <li><a href="accessories.html">Accessories</a></li>
+                   <ul class="main-nav nav navbar-nav">
+                        <li><a href="{% url 'productlist:listings' %}">Home</a></li>
+                        <li><a href="{% url 'productlist:hotdeals' %}">Hot Deals</a></li>
+                        <li><a href="{% url 'productlist:laptop' %}">Laptops</a></li>
+                        <li><a href="{% url 'productlist:smartphones' %}">Smartphones</a></li>
+                        <li><a href="{% url 'productlist:camera' %}">Cameras</a></li>
+                        <li><a href="{% url 'productlist:accessories' %}">Accessories</a></li>
                     </ul>
                     <!-- /NAV -->
                 </div>
