@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import listing,productreviews
+from .models import listing,productreviews,hotdeals
 
 
 
@@ -20,3 +20,7 @@ class reviewadmin(admin.ModelAdmin):
 admin.site.register(productreviews,reviewadmin)
 
 
+class deals(admin.ModelAdmin):
+    list_display = ('id', 'p_name', 'price', "quantity", "category", 'oldprice')
+
+admin.site.register(hotdeals,deals)
