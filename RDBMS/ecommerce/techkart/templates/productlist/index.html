@@ -206,6 +206,7 @@
                                                 </div>
 
                                             </div>
+                                            {% if user.is_authenticated %}
                                              <form name="addtocart" action="{% url 'cart:addtocart' %}" method="post">
                                                 {% csrf_token %}
                                                  <div class="add-to-cart">
@@ -214,6 +215,16 @@
                                                      <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
                                                  </div>
                                             </form>
+                                        {% else %}
+                                            <form name="addtocart" action="{% url 'accounts:login' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ alllisting.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
+                                        {% endif %}
                                         </div>
 
                 <!-- /row -->
@@ -318,7 +329,7 @@
                                         <div class="product">
                                             <a href="{% url 'productlist:listing' storage.id %}">
                                             <div class="product-img">
-                                                <img src="{{ storage.mainphoto.url }}" height="300" width="150" alt="">
+                                                <img src="{{ storage.mainphoto.url }}" height="200" width="150" alt="">
 
                                             </div></a>
                                             <div class="product-body">
@@ -330,6 +341,7 @@
                                                 </div>
 
                                             </div>
+                                                {% if user.is_authenticated %}
                                                 <form name="addtocart" action="{% url 'cart:addtocart' %}" method="post">
                                                 {% csrf_token %}
                                                  <div class="add-to-cart">
@@ -338,6 +350,16 @@
                                                      <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
                                                  </div>
                                             </form>
+                                            {% else %}
+                                            <form name="addtocart" action="{% url 'accounts:login' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ storage.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
+                                            {% endif %}
                                         </div>
                                         <!-- /product -->
 

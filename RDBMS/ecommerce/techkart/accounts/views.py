@@ -33,8 +33,8 @@ def register(request):
 
 def login(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
+        username = request.POST.get('username',False)
+        password = request.POST.get("password",False)
 
         user = auth.authenticate(username=username,password=password)
         if user is not None:
