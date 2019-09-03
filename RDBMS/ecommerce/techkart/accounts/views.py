@@ -42,7 +42,7 @@ def login(request):
             messages.success(request,"Successfully logged in")
             return redirect("productlist:listings")
         else:
-            messages.error(request,"Invalid Credentials")
+            messages.error(request,"Please Provide Valid Credentials")
             return redirect("accounts:login")
     else:
         return render(request,"accounts/login.html")

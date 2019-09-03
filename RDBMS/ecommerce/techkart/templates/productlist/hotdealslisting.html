@@ -88,13 +88,12 @@
                 <div id="responsive-nav">
                     <!-- NAV -->
                     <ul class="main-nav nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Hot Deals</a></li>
-                        <!--                        <li><a href="#">Categories</a></li>-->
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Cameras</a></li>
-                        <li><a href="#">Accessories</a></li>
+                        <li><a href="{% url 'productlist:listings' %}">Home</a></li>
+                        <li class="active"><a href="{% url 'productlist:hotdeals' %}">Hot Deals</a></li>
+                        <li><a href="{% url 'productlist:laptop' %}">Laptops</a></li>
+                        <li><a href="{% url 'productlist:smartphones' %}">Smartphones</a></li>
+                        <li><a href="{% url 'productlist:camera' %}">Cameras</a></li>
+                        <li><a href="{% url 'productlist:accessories' %}">Accessories</a></li>
                     </ul>
                     <!-- /NAV -->
                 </div>
