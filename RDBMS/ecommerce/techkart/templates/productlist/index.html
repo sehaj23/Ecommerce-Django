@@ -3,6 +3,23 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+{% block js %}
+<script>
+console.log('working');
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+}
+$('.cart').click(function(){
+console.log('clicked');
+});
+</script>
+
+{% endblock %}
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -212,6 +229,7 @@
                                                  <div class="add-to-cart">
                                                     <input type="hidden" name="quantity" value="1">
                                                      <input type="hidden" name="listingid" value="{{ alllisting.id }}">
+<!--                                                     <button class="add-to-cart-btn">Add to cart</button>-->
                                                      <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
                                                  </div>
                                             </form>
@@ -221,6 +239,7 @@
                                                  <div class="add-to-cart">
                                                     <input type="hidden" name="quantity" value="1">
                                                      <input type="hidden" name="listingid" value="{{ alllisting.id }}">
+<!--                                                      <button class="add-to-cart-btn">Add to cart</button>-->
                                                      <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
                                                  </div>
                                             </form>
@@ -443,126 +462,7 @@
                             {% endif %}
 						</div>
 					</div>
-                    {% if headphones %}
-					<div class="col-md-4 col-xs-6">
-						<div class="section-title">
-							<h4 class="title">TOP SELLING</h4>
-							<div class="section-nav">
-								<div id="slick-nav-4" class="products-slick-nav"></div>
-							</div>
-						</div>
 
-						<div class="products-widget-slick" data-nav="#slick-nav-4">
-							<div>
-                                {% for headphones in headphones %}
-								<!-- product widget -->
-								<div class="product-widget">
-                                    <a href="{% url 'productlist:listing' headphones.id %}">
-									<div class="product-img">
-										<img src="{{ headphones.mainphoto.url }}" alt="">
-									</div></a>
-									<div class="product-body">
-										<p class="product-category">{{ headphones.category}} </p>
-										<h3 class="product-name"><a href="{% url 'productlist:listing' headphones.id %}">{{ headphones.p_name }}</a></h3>
-										<h4 class="product-price">₹{{ headphones.price }}</h4>
-									</div>
-								{% endfor %}
-                                {% endif %}
-
-
-
-
-                                </div>
-
-
-							</div>
-
-							<div>
-
-
-								{% if laptops %}
-                                {% for laptops in laptops %}
-								<div class="product-widget">
-                                    <a href="{% url 'productlist:listing' laptops.id %}">
-									<div class="product-img">
-										<img src="{{ laptops.mainphoto.url }}" alt="">
-									</div></a>
-									<div class="product-body">
-										<p class="product-category">{{ laptops.category }}</p>
-										<h3 class="product-name"><a href="{% url 'productlist:listing' laptops.id %}">{{ laptops.p_name }}</a></h3>
-										<h4 class="product-price">₹{{ laptops.price }}</h4>
-									</div>
-								</div>
-                                {% endfor %}
-								<!-- product widget -->
-							</div>
-                            {% endif %}
-						</div>
-					</div>
-
-					<div class="clearfix visible-sm visible-xs"></div>
-
-					<div class="col-md-4 col-xs-6">
-						<div class="section-title">
-							<h4 class="title">Top SELLING</h4>
-							<div class="section-nav">
-								<div id="slick-nav-5" class="products-slick-nav"></div>
-							</div>
-						</div>
-                        {% if storage %}
-						<div class="products-widget-slick" data-nav="#slick-nav-5">
-
-                            <div>
-							    {% for storage in storage %}
-								<!-- product widget -->
-								<div class="product-widget">
-                                    <a href="{% url 'productlist:listing' storage.id %}">
-									<div class="product-img">
-										<img src="{{ storage.mainphoto.url }}" alt="">
-									</div></a>
-									<div class="product-body">
-										<p class="product-category">{{ storage.category }}</p>
-										<h3 class="product-name"><a href="{% url 'productlist:listing' storage.id %}">{{ storage.p_name }}</a></h3>
-										<h4 class="product-price">₹ {{ storage.price }} </h4>
-									</div>
-								</div>
-                                {% endfor %}
-								<!-- /product widget -->
-                            {% else %}
-                                <h1>NO PRODUCTS TO SHOW</h1>
-
-								<!-- product widget -->
-
-							</div>
-                            {% endif %}
-                        </div>
-
-                            {% if Smartphone %}
-							<div>
-								<!-- product widget -->
-                                {% for Smartphone in Smartphone %}
-								<div class="product-widget">
-                                    <a href="{% url 'productlist:listing' Smartphone.id %}">
-									<div class="product-img">
-										<img src="{{ Smartphone.mainphoto.url }}" alt="">
-									</div></a>
-									<div class="product-body">
-										<p class="product-category">{{ Smartphone.category }}</p>
-										<h3 class="product-name"><a href="{% url 'productlist:listing' Smartphone.id %}">{{ Smartphone.p_name }}</a></h3>
-										<h4 class="product-price">₹{{ Smartphone.price }} </h4>
-									</div>
-								</div>
-                                {% endfor %}
-								<!-- /product widget -->
-                                {% else %}
-                                <h1>NO PRODUCTS TO SHOW</h1>
-
-							</div>
-						    {% endif %}
-                        </div>
-					</div>
-
-				</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
