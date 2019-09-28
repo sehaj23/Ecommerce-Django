@@ -30,13 +30,19 @@ def addtocart(request):
         return render(request,"cart/viewCart.html",context)
 
 def opencart(request):
-        cid = request.user.id
-        product = addcart.objects.filter(id=cid)
+    pi = request.POST.get("listingid")
+    cid = request.user.id
+    print(pi)
+    products = addcart.objects.filter(cid_id=cid).filter(pid_id=pi).values()
+    pro = listing.objects.filter(id=pi)
+    print(pro)
 
-        context = {
-            "product":product
-        }
-        return render(request,"cart/viewCart.html",context)
+    print(products)
+    context = {
+        "pro": pro,
+        "products": products
+    }
+    return render(request, "cart/checkout.html", context)
 
 def checkout(request):
     pi = request.POST.get("listingid")

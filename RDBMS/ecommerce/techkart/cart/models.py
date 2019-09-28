@@ -24,3 +24,8 @@ class pendingorder(models.Model):
     pid = models.ForeignKey(listing,on_delete=models.CASCADE)
     cid = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     quantity = models.IntegerField(max_length=20)
+
+class finalorder(models.Model):
+    bid = models.ForeignKey(customerbillingaddress,on_delete=models.CASCADE)
+    amount = models.IntegerField(max_length=100,default=0)
+    cartid = models.ForeignKey(pendingorder,on_delete=models.CASCADE)
