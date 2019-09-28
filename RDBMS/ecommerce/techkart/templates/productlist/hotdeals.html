@@ -1,0 +1,240 @@
+{% extends 'productlist/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+ <div id="header">
+      <title>TechKart : Laptop</title>
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <!--my account -->
+                        {% if user.is_authenticated %}
+                           <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
+                    </ul>                         <ul class="header-links pull-right">
+                        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    </ul>
+
+                         <div class="header-ctn">
+                          <div class="dropdown">
+
+                                        <a href="{% url 'cart:opencart' %}" class="fa fa-shopping-cart"></input>
+                                        <span>Your Cart</span></a>
+
+
+
+                                </div>
+                         </div>
+                        {% else %}
+                             <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:login' %}"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                        <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:register' %}"><i class="fa fa-user-o"></i> Register</a></li>
+                    </ul>
+
+                        {% endif %}
+                        <!-- LOGO -->
+                        <div class="col-md-3">
+                            <div class="header-logo">
+                                <a href="{% url 'productlist:listings' %}" class="logo">
+                                    <img src="{% static './img/logoo.png' %}" alt="" height="75px" width="75px">
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- /LOGO -->
+
+                        <!-- SEARCH BAR -->
+                        <div class="col-md-6">
+                            <div class="header-search">
+                                <form action="{% url 'productlist:search' %} " method="get">
+                                {% csrf_token %}
+                                    <input class="input" placeholder="Search here" name="keywords">
+                                    <button class="search-btn">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /SEARCH BAR -->
+
+                        <!-- ACCOUNT -->
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+</head>
+        <!-- /HEADER -->
+
+        <!-- NAVIGATION -->
+        <nav id="navigation">
+            <!-- container -->
+            <div class="container">
+                <!-- responsive-nav -->
+                <div id="responsive-nav">
+                    <!-- NAV -->
+                     <ul class="main-nav nav navbar-nav">
+                        <li><a href="{% url 'productlist:listings' %}">Home</a></li>
+                        <li class="active"><a href="{% url 'productlist:hotdeals' %}">Hot Deals</a></li>
+                        <li><a href="{% url 'productlist:laptop' %}">Laptops</a></li>
+                        <li><a href="{% url 'productlist:smartphones' %}">Smartphones</a></li>
+                        <li><a href="{% url 'productlist:camera' %}">Cameras</a></li>
+                        <li><a href="{% url 'productlist:accessories' %}">Accessories</a></li>
+                    </ul>
+                    <!-- /NAV -->
+                </div>
+                <!-- /responsive-nav -->
+            </div>
+            <!-- /container -->
+        </nav>
+        <!-- /NAVIGATION -->
+
+        
+        <!-- SECTION -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                {% if deal %}
+                    <!-- Products tab & slick -->
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="products-tabs">
+                                <!-- tab -->
+                                <div id="tab1" class="tab-pane active">
+                                    <div class="products-slick" data-nav="#slick-nav-1">
+                                        <!-- product -->
+                                     {% for deal in deal %}
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="{{ deal.mainphoto.url }}" height="300" width="100" alt="">
+                                             
+                                            </div>
+                                            <div class="product-body">
+                                                
+                                                <h3 class="product-name"><a href="{% url 'productlist:hotdealsinfo' deal.id %}">{{ deal.p_name }}</a></h3>
+                                                <h4 class="product-price">₹{{ deal.price }} <del class="product-old-price">₹{{ deal.oldprice }}</del></h4>
+
+                                                <div class="product-btns">
+
+                                                </div>
+                                            </div>
+                                            {% if user.is_authenticated %}
+                                             <form name="addtocart" action="{% url 'cart:addtocart' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ deal.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
+                                            {% else %}
+                                            <form name="addtocart" action="{% url 'accounts:login' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ cameras.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
+                                            {% endif %}
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <h1>NO DEALS AVAILABLE</h1>
+                                        {% endif %}
+                                        <!-- /product -->
+
+
+                                        <!-- /product -->
+                                    </div>
+                                   <!-- <div id="slick-nav-1" class="products-slick-nav"></div>-->
+                                </div>
+                                <!-- /tab -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Products tab & slick -->
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /SECTION -->
+
+        
+        
+        <!-- SECTION -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    {% if deals %}
+                    <!-- Products tab & slick -->
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="products-tabs">
+                                <!-- tab -->
+                                <div id="tab1" class="tab-pane active">
+                                    <div class="products-slick" data-nav="#slick-nav-1">
+                                        <!-- product -->
+                                    {% for deals in deals %}
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="{{ deals.mainphoto.url }}"  height="300" width="100" alt="">
+                                             
+                                            </div>
+                                            <div class="product-body">
+                                                
+                                                <h3 class="product-name"><a href="{% url 'productlist:hotdealsinfo' deals.id %}">{{ deals.p_name }}</a></h3>
+                                                <h4 class="product-price">₹{{ deals.price }}<del class="product-old-price">₹{{ deals.oldprice }}</del></h4>
+
+                                                <div class="product-btns">
+
+                                                </div>
+                                            </div>
+                                              <form name="addtocart" action="{% url 'cart:addtocart' %}" method="post">
+                                                {% csrf_token %}
+                                                 <div class="add-to-cart">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                     <input type="hidden" name="listingid" value="{{ deals.id }}">
+                                                     <input type="submit" name="ADD TO CART" VALUE="ADD TO CART" class="add-to-cart-btn">
+                                                 </div>
+                                            </form>
+                                        </div>
+                                        <!-- /product -->
+                                        {% endfor%}
+                                        {% else %}
+                                        <h1>NO DEALS AVAILABLE</h1>
+                                        {% endif %}
+
+                                        <!-- /product -->
+                                    </div>
+                                   <!-- <div id="slick-nav-1" class="products-slick-nav"></div>-->
+                                </div>
+                                <!-- /tab -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Products tab & slick -->
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /SECTION -->
+
+
+
+
+    </body>
+</html>
+{% endblock %}

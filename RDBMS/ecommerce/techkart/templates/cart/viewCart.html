@@ -1,0 +1,375 @@
+{% extends 'productlist/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+    <body>
+<!--            <script src="{% static 'js/jquery.js' %}"></script>-->
+            <!-- MAIN HEADER -->
+            <div id="header">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <!-- LOGO -->
+                        <div class="col-md-3">
+                            <div class="header-logo">
+                                <a href="{% url 'productlist:listings' %}" class="logo">
+                                    <img src="{% static './img/logoo.png' %}" alt="" height="100px" width="150px">
+                                </a>
+                            </div>
+                        </div>
+                          {% if user.is_authenticated %}
+                           <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:logout' %}"><i class="fa fa-user-o"></i>Logout</a></li>
+                    </ul>                         <ul class="header-links pull-right">
+                        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                    </ul>
+
+
+                        {% else %}
+                             <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:login' %}"><i class="fa fa-user-o"></i> Login</a></li>
+                        </ul>
+                        <ul class="header-links pull-right">
+                        <li><a href="{% url 'accounts:register' %}"><i class="fa fa-user-o"></i> Register</a></li>
+                    </ul>
+
+                        {% endif %}
+                        <!-- /LOGO -->
+
+                        <!-- SEARCH BAR -->
+                        <div class="col-md-6">
+                            <div class="header-search">
+                                <form>
+                                    <input class="input" placeholder="Search here">
+                                    <button class="search-btn">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /SEARCH BAR -->
+
+                        <!-- ACCOUNT -->
+                        <div class="col-md-3 clearfix">
+                            <div class="header-ctn">
+                                <!-- Wishlist -->
+
+                                <!-- /Wishlist -->
+
+                                <!-- Menu Toogle -->
+
+                                <!-- /Menu Toogle -->
+                            </div>
+                        </div>
+                        <!-- /ACCOUNT -->
+                    </div>
+                    <!-- row -->
+                </div>
+                <!-- container -->
+            </div>
+            <!-- /MAIN HEADER -->
+        </header>
+        <!-- /HEADER -->
+
+        <!-- BREADCRUMB -->
+        <div id="breadcrumb" class=" section order-grad">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12">
+<!--                        <h4 class="breadcrumb-header">Regular Page</h4>-->
+                        <ul class="breadcrumb-tree">
+                            <li><a href="#">My Account</a></li>
+                            <li class="active">My Cart</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /BREADCRUMB -->
+        <!--Order Details-->
+        <div class="container-fluid">
+            <div class="row" style="float: left;">
+                <div class="col-sm-7" style="margin-left: 2%; margin-right: 1%; box-shadow: 5px 10px 18px #888888;">
+                    <div class="row">
+                        <div class="col-sm-12" style="border-bottom: 1px solid whitesmoke;">
+                            <div class="row" style="margin-top: 2%;">
+                                <div class="col-sm-3">
+                                    <p style="float: left; font-size: large;">My Cart</p>
+                                    <p style="float: left; font-size: large;">(</p>
+                                    <p style="float: left; font-size: large;">{{ product.quantity }}</p>
+                                    <p style="float: left; font-size: large;">)</p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if cart %}
+
+                    {% for product in product %}
+
+
+
+                    <div class="row" style="padding-bottom: 1%; padding-top: 2%; border-bottom: 1px solid whitesmoke;">
+                        <div class="col-sm-3">
+                            <img src="{{ product.mainphoto.url }}" alt="#" height=160px" width="160px">
+                            <button type="button" class="btn btn-default"  style="float: left;" id="decrease" onclick="decreaseValue()" value="Decrease Value" disabled><img src="{% static 'img/minus.png' %}" alt="#" height="18" width="18"></button>
+                            <input type="text" id="number" name = "quantity" value="1" style="float: left; height: 33px; width: 35px; text-align: center; margin-left: 1%; margin-right: 1%; border-radius: 4px 4px 4px 4px;" />
+                            <button type="button" class="btn btn-default"  style="float: left;" id="increase" onclick="increaseValue()" value="Increase Value"><img src="{% static 'img/plus.png' %}" alt="#" height="18" width="18"></button>
+
+                        </div>
+                        <div class="col-sm-5">
+                            <h5>{{ product.p_name }}</h5><br/>
+                            <img src="{% static 'img/rupee.png' %}" alt="#" height="18" width="18" style="float: left;"><b>
+                            <input style="float: left; border: none; background-color: white;" id="proPrice" value="{{ product.price }}" disabled=""></input></b><br/><br/>
+                            <p style="float: left;">Color : </p><p style="float: left;">&nbsp;{{ product.p_color }}</p><br/><br/>
+                            <a href="#" style="float: left;">
+                                <img src="{% static 'img/cancel.png' %}" alt="#" height="18" width="18"> Remove</a>
+                        </div>
+                        <div class="col-sm-4">
+                            <b><p style="float: left;">Delivery Expected by </p><p style="float: left;">&nbsp;Date</p></b>
+                            <br/><br/><p style=""> write here the delivery date --></p>
+                            <br/><p>10 Days replacement Policy.</p>
+<!--                            <b><p style="float: left;">Delivery Expected by </p>-->
+<!--                                <p style="float: left;">&nbsp;Date</p></b> #5days from current data-->
+<!--                            <br/><br/><p>10 Days replacement Policy.</p>-->
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <form name="placeorder" action="{% url 'cart:checkout' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row" style="margin-top: 2%; margin-bottom: 3%;">
+                        <div class="col-sm-12">
+                            <input type="hidden" id="number" value="1" name="quantity">
+                            <input type="hidden" value="{{ product.id }}" name="listingid">
+                            <input type="submit" name="Place order" value="Place order" class="btn btn-info btn-lg" style="padding-left: 10%; padding-right: 10%; float: right;">
+<!--                            <button class="btn btn-info btn-lg" style="padding-left: 10%; padding-right: 10%; float: right;">Place Order</button>-->
+                        </div>
+                        </div>
+                        </form>
+ {% endfor %}
+                    {% else %}
+                    <h1><Center>Your Cart is Empty</Center></h1>
+                    {% endif %}
+
+                </div>
+                <div class="col-sm-4" style="float: left; box-shadow: 5px 10px 18px #888888;">
+                    <div class="row">
+                        <div class="col-lg-12" style="border-bottom: 1px solid whitesmoke;">
+                            <p style="font-size: 16px; padding-top: 6%; padding-bottom: 1.5%;">PRICE DETAILS</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-sm-8" style="font-size: 16px; padding-top: 5%">
+                                    <p style="float: left;">Price&nbsp;</p>
+                                    <p style="float: left;">Item</p>
+                                    <p style="float: left;">(&nbsp;</p>
+                                    <input style="float: left; border: none; background-color: white; width: 4%;" id="itemVal" value="1" disabled="true"></input>
+                                    <p style="float: left;">)</p>
+                                    
+                                </div>
+                                <div class="col-sm-4" style="font-size: 16px; padding-top: 5%;">
+                                    <span class="fa fa-inr" style="float: right; font-size:22px">
+                                        <input type="text" id="priceItem" style="width: 100px; border: none; background-color: white;" value="" disabled=""></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="border-bottom: 1px solid whitesmoke;">
+                            <div class="row">
+                                <div class="col-sm-6" style="font-size: 16px; padding-top: 5%; padding-bottom: 1.5%;">
+                                    <p style="float: left;">Delivery</p>
+                                </div>
+                                <div class="col-sm-6" style="font-size: 16px; padding-top: 5%">
+                                    <i class="fa fa-inr" id="deliveryIcon" style="float: right; font-size:22px">
+                                        <input type="text" class="fa fa-inr" id="delivery" style="width: 100px; border: none; background-color: white;" value="" disabled="">
+                                    </i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="border-bottom: 1px solid whitesmoke;">
+                            <div class="row">
+                                <div class="col-sm-6" style="font-size: 16px; padding-top: 5%; padding-bottom: 1.5%;">
+                                    <p style="float: left;">Total Payable</p>
+                                </div>
+                                <div class="col-sm-6" style="font-size: 16px; padding-top: 5%;">
+                                    <span class="fa fa-inr" style="float: right; font-size:22px"><input type="text" id="totalPrice" style="width: 100px; border: none; background-color: white;" value="" disabled=""></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="col-sm-12" style="font-size: 16px; padding-top: 5%; padding-bottom: 2.5%;">
+                                    <p style="font-size: 16px; color: blueviolet;">Proceed to place this order.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        <div style="margin-right: 25%; float: left; width: 74%;">
+            <div class="order-sec" style="height: 60px; margin-left: 5%;">
+                <p style="float: left; font-size: large;">My Cart</p><p style="float: left; font-size: large;">(</p><p style="float: left; font-size: large;">1</p><p style="float: left; font-size: large;">)</p>
+                <img src="glaphycons/location.png" alt="#" height="32" width="22" style="margin-left: 20%; float: left;"><p style="float: left; padding-left: 0.5%; padding-right: 0.5%">Deliver<br/> to</p>
+                <form style="float: left;">
+                    <div class="form-group" style="width: 420px;">
+                        <select class="form-control">
+                            <option>1</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="order-sec" id="borderStyle" style="height: 220px; margin-left: 5%;">
+                <div id="order-image">
+                    <img src="img/product06.png" alt="#" height=160px" width="160px">
+                    <button type="button" class="btn btn-default"  style="float: right;" id="increase" onclick="increaseValue()" value="Increase Value"><img src="glaphycons/plus.png" alt="#" height="18" width="18"></button>
+                    <input type="text" id="number" value="1" style="float: right; height: 33px; width: 35px; text-align: center; margin-left: 1%; margin-right: 1%; border-radius: 4px 4px 4px 4px;" />
+                    <button type="button" class="btn btn-default"  style="float: right;" id="decrease" onclick="decreaseValue()" value="Decrease Value" disabled><img src="glaphycons/minus.png" alt="#" height="18" width="18"></button>
+                </div>
+                <div style="height: 100px; width: 40%; float: left; margin-left: 5%; padding-left: 2%;padding-right: 2%;">
+                    <h5>Dell Inspiron 15 5000 Core i5 8th Gen - (8 GB/1 TB HDD/Windows 10 Home) INSP 5570 Laptop  (15.6 inch, Silver, 2.2 kg, With MS Office)</h5><br/>
+                    <img src="glaphycons/rupee-indian.png" alt="#" height="18" width="18" style="float: left;"><b><input style="float: left; border: none;" id="proPrice" value="4000"></input></b><br/><br/>
+                    <p style="float: left;">Color : </p><p style="float: left;">&nbsp;Black</p><br/><br/>
+                    <a href="#" style="float: left;"><img src="glaphycons/cancel.png" alt="#" height="18" width="18"> Remove</a>
+                </div>
+                <div style="height: 100px; width:29%; float: left; margin-left: 0.4%;">
+                    <b><p style="float: left;">Delivery Expected by </p><p style="float: left;">&nbsp;Date</p></b>
+                    <br/><br/><p>10 Days replacement Policy.</p>
+                </div>
+            </div>
+            <div class="order-sec" id="borderStyle" style="height: 65px; margin-left: 5%;">
+                <button class="btn btn-info btn-lg" style="padding-left: 10%; padding-right: 10%; float: right;">Place Order</button>
+            </div>
+        </div>
+        <div style="width: 20%; margin-left: 2%; float: left; overflow: hidden;">
+            jbjknjn
+        </div>
+        -->
+        <!--/Order Details-->
+
+        <!-- SECTION -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /SECTION -->
+
+        <!-- FOOTER -->
+        <script>
+            let qty = parseInt(document.getElementById("number").value);
+            let val = parseInt(document.getElementById("proPrice").value);
+            let sum1 = parseInt(document.getElementById("priceItem").value);
+            let total = parseInt(document.getElementById("totalPrice").value);
+            let sum = val*qty;
+            document.getElementById("priceItem").value = sum;
+            document.getElementById("totalPrice").value = sum;
+            let delCharge = 50;
+
+            if(val >= 500)
+            {
+                document.getElementById("delivery").value = 0;
+            } else
+            {
+                document.getElementById("delivery").value = (qty * delCharge);
+
+                document.getElementById("totalPrice").value =val+ (qty * delCharge);
+              }
+<!--            document.getElementById("priceItem").value = val;-->
+            function increaseValue() {
+              let value = qty;
+              value = isNaN(value) ? 0 : value;
+              value++;
+              if(value > 10)
+              {
+                  value = 10;
+                  qty = value;
+              }
+              else
+              {
+                  qty = value;
+              }
+              document.getElementById("decrease").disabled = false;
+              //val = val*qty;
+              //document.getElementById("proPrice").value = val;
+              sum = val*qty;
+              document.getElementById("priceItem").value = sum;
+              document.getElementById("itemVal").value = qty;
+              if(val < 500)
+              {
+                delCharge = (qty * delCharge);
+                document.getElementById("delivery").value = delCharge;
+                let totalP = sum + delCharge;
+                document.getElementById("totalPrice").value = totalP;
+              }
+              else
+              {
+                document.getElementById("totalPrice").value = val;
+              }
+            }
+<!--            if(val<500)-->
+<!--            {-->
+<!--                document.getElementById("totalPrice").value = val+delCharge;-->
+<!--            }-->
+<!--            else-->
+<!--            {-->
+<!--                document.getElementById("totalPrice").value = val;-->
+<!--            }-->
+
+            function decreaseValue() {
+              let value = parseInt(document.getElementById('number').value, 10);
+              value = isNaN(value) ? 0 : value;
+              value < 1 ? value = 1 : '';
+              value--;
+              //document.getElementById('number').value = value;
+              //let price = parseInt(document.getElementById("proPrice").value, 10);
+              //price =val;
+              //document.getElementById("proPrice").value = price;
+              if(value < 2)
+              {
+                  document.getElementById("decrease").disabled = true;
+              }
+              sum = val*qty;
+              document.getElementById("priceItem").value = sum;
+              document.getElementById("itemVal").value = qty;
+
+
+              //document.getElementById("itemVal").value = value;
+              //document.getElementById("priceItem").value = (price*value);
+              //let delCharge = 50;
+            //  document.getElementById("totalPrice").value = price + delCharge;
+<!--              if(val < 500)-->
+<!--              {-->
+<!--                document.getElementById("delivery").value = (value * delCharge);-->
+<!--                document.getElementById("totalPrice").value = (price*value) + (value * delCharge);-->
+<!--              }-->
+<!--              else-->
+<!--              {-->
+<!--                document.getElementById("totalPrice").value = (price*value);-->
+              }
+            }
+        </script>
+
+    </body>
+</html>
+{% endblock %}
