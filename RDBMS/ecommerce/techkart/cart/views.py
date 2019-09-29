@@ -1,3 +1,5 @@
+import cgi
+
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from .models import addcart, pendingorder,customerbillingaddress
@@ -113,7 +115,7 @@ def checkoutdetails(request):
             'INDUSTRY_TYPE_ID': 'Retail',
             'WEBSITE': 'WEBSTAGING',
             'CHANNEL_ID': 'WEB',
-            'CALLBACK_URL':'http://127.0.0.1:8000/techkart/paytm/handlerrequest',
+            'CALLBACK_URL':'http://127.0.0.1:8000/handlerrequest',
         }
         param_dict["CHECKSUMHASH"] = Checksum.generate_checksum(param_dict,MERCHANT_KEY)
         return render(request,"cart/paytm.html",{'param_dict': param_dict})
@@ -125,7 +127,7 @@ def checkoutdetails(request):
 
 @csrf_exempt
 def handlerrequest(request): #paytm will handle   post request here
-    form = request.POST
+    form = cgi.FieldStorage()
     response_dict = {}
     for i in form.keys():
         response_dict[i] = form[i]
