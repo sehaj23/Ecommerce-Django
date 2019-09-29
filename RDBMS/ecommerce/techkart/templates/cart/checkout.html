@@ -12,6 +12,10 @@
 	var c = x * b;
 	document.getElementById("finaltotal").innerHTML = c
 
+	document.getElementById("amount").innerHTML = c
+
+
+
 }
 
 
@@ -117,7 +121,7 @@
 
 					<div class="col-md-7">
 						<!-- Billing Details -->
-						<form name="billing address" method="post" action="{% url 'cart:checkoutdetails' %}">
+						<form name="billing address" method="post" action="{%  url 'cart:checkoutdetails' %}">
 							{% csrf_token %}
 						<div class="billing-details">
 							<div class="section-title">
@@ -150,8 +154,9 @@
 							</div>
 
 						</div>
-							<a href="#" class="primary-btn order-submit">Place order</a>
-							</form>
+
+<!--							<a href="#" class="primary-btn order-submit">Place order</a>-->
+
 						<!-- /Billing Details -->
 
 						<!-- Shiping Details
@@ -217,8 +222,8 @@
 							{% for products in products %}
 							<div class="order-products">
 								<div class="order-col">
-									<input type="hidden" value={{ products.quantity }} id="quantity">
-									<input type="hidden" value={{ pro.price }} id="pricee">
+									<input type="hidden" value={{ products.quantity }} id="quantity" name="quantity">
+									<input type="hidden" value={{ pro.price }} id="pricee" name="amount">
 									<div><h6>{{ products.quantity }}X{{ pro.p_name }}</h6></div>
 									<div><h6>{{ pro.price }}</h6> </div>
 								</div>
@@ -263,9 +268,10 @@
 								I've read and accept the <a href="#">terms & conditions</a>
 							</label>
 						</div>
-
+							<input type="submit" class="primary-btn order-submit" value="Place Order">
 					</div>
 					<!-- /Order Details -->
+				</form>
 				</div>
 				<!-- /row -->
 			</div>
