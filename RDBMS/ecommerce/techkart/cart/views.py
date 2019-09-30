@@ -38,16 +38,16 @@ def opencart(request):
     pi = request.POST.get("listingid")
     cid = request.user.id
 
-    products = addcart.objects.filter(cid_id=cid).filter(pid_id=pi).values()
+    product = addcart.objects.filter(cid_id=cid).filter(pid_id=pi).values()
     pro = listing.objects.filter(id=pi)
 
 
 
     context = {
         "pro": pro,
-        "products": products
+        "product": product
     }
-    return render(request, "cart/checkout.html", context)
+    return render(request, "cart/viewCart.html", context)
 
 def checkout(request):
     pi = request.POST.get("listingid")
@@ -128,21 +128,24 @@ def checkoutdetails(request):
 @csrf_exempt
 def handlerrequest(request): #paytm will handle   post request here
     form = cgi.FieldStorage()
+
+
     response_dict = {}
     for i in form.keys():
         response_dict[i] = form[i]
         if i == 'CHECKSUMHASH':
+
             checksum = form[i]
+            verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+            if verify:
+                if response_dict['RESPCODE'] == '01':
+                    print('order successful')
+                    return render(request, 'cart/paymentstatus.html', {'response': response_dict})
+                else:
+                    print('order was not successful because' + response_dict['RESPMSG'])
+                    return render(request, 'cart/paymentstatus.html', {'response': response_dict})
 
-    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
-    if verify:
-        if response_dict['RESPCODE'] == '01':
-            print('order successful')
-        else:
-            print('order was not successful because' + response_dict['RESPMSG'])
     return render(request, 'cart/paymentstatus.html', {'response': response_dict})
-
-
 
 def terms(request):
     return render(request,"cart/tc.html")
