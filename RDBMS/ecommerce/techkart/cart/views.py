@@ -141,3 +141,8 @@ def handlerrequest(request): #paytm will handle   post request here
         else:
             print('order was not successful because' + response_dict['RESPMSG'])
     return render(request, 'cart/paymentstatus.html', {'response': response_dict})
+
+
+
+def terms(request):
+    return render(request,"cart/tc.html")

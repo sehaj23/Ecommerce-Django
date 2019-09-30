@@ -462,7 +462,115 @@ console.log('clicked');
                             {% endif %}
 						</div>
 					</div>
+                    	<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">TOP SELLING</h4>
+							<div class="section-nav">
+								<div id="slick-nav-3" class="products-slick-nav"></div>
+							</div>
+						</div>
 
+						<div class="products-widget-slick" data-nav="#slick-nav-3">
+							<div>
+                                {% if headphones %}
+                                {% for headphones in headphones %}
+								<!-- product widget -->
+								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' headphones.id %}">
+									<div class="product-img">
+										<img src="{{ headphones.mainphoto.url }}" alt="">
+									</div></a>
+									<div class="product-body">
+										<p class="product-category">{{ headphones.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' headphones.id %}">{{ headphones.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ headphones.price }} </h4>
+									</div>
+								</div>
+                                {% endfor %}
+
+                    {% else %}
+                    <h1>No listings found </h1>
+                {% endif %}
+
+								<!-- /product widget -->
+
+							</div>
+                                {% if Smartphone %}
+							<div>
+                                {% for Smartphone in Smartphone %}
+								<!-- protduct widget -->
+								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' Smartphone.id %}">
+									<div class="product-img">
+										<img src="{{ Smartphone.mainphoto.url }}" alt="">
+									</div></a>
+									<div class="product-body">
+										<p class="product-category">{{ Smartphone.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' Smartphone.id %}">{{ Smartphone.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ Smartphone.price }}</h4>
+									</div>
+								</div>
+                                {% endfor %}
+
+								<!-- product widget -->
+							</div>
+                            {% endif %}
+						</div>
+					</div>
+                    	<div class="col-md-4 col-xs-6">
+						<div class="section-title">
+							<h4 class="title">TOP SELLING</h4>
+							<div class="section-nav">
+								<div id="slick-nav-3" class="products-slick-nav"></div>
+							</div>
+						</div>
+                                {% if laptops %}
+						<div class="products-widget-slick" data-nav="#slick-nav-3">
+							<div>
+                                {% for laptops in laptops %}
+								<!-- product widget -->
+								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' laptops.id %}">
+									<div class="product-img">
+										<img src="{{ laptops.mainphoto.url }}" alt="">
+									</div></a>
+									<div class="product-body">
+										<p class="product-category">{{ laptops.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' laptops.id %}">{{ laptops.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ laptops.price }} </h4>
+									</div>
+								</div>
+                                {% endfor %}
+
+                    {% else %}
+                    <h1>No listings found </h1>
+                {% endif %}
+
+								<!-- /product widget -->
+
+							</div>
+                                {% if storage %}
+							<div>
+                                {% for storage in storage %}
+								<!-- protduct widget -->
+								<div class="product-widget">
+                                    <a href="{% url 'productlist:listing' storage.id %}">
+									<div class="product-img">
+										<img src="{{ storage.mainphoto.url }}" alt="">
+									</div></a>
+									<div class="product-body">
+										<p class="product-category">{{ storage.category }}</p>
+										<h3 class="product-name"><a href="{% url 'productlist:listing' storage.id %}">{{ storage.p_name }}</a></h3>
+										<h4 class="product-price">₹{{ storage.price }}</h4>
+									</div>
+								</div>
+                                {% endfor %}
+
+								<!-- product widget -->
+							</div>
+                            {% endif %}
+						</div>
+					</div>
 				<!-- /row -->
 			</div>
 			<!-- /container -->
